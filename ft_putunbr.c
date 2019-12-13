@@ -1,28 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   parser.c                                           :+:      :+:    :+:   */
+/*   ft_putunbr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mweerts <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/12/13 06:58:16 by mweerts           #+#    #+#             */
-/*   Updated: 2019/12/13 07:52:17 by mweerts          ###   ########.fr       */
+/*   Created: 2019/10/09 20:28:46 by mweerts           #+#    #+#             */
+/*   Updated: 2019/12/13 07:51:50 by mweerts          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libftprintf.h"
 
-void    parse_flags(const char *str, va_list ap)
+void	ft_putunbr(unsigned int n)
 {
-    int i;
-
-    i = 0;
-    if (str[i] == 'c')
-        ft_putchar(va_arg(ap, int));
-    else if (str[i] == 's')
-        ft_putstr(va_arg(ap, char*));
-    else if (str[i] == 'd' || str[i] == 'i')
-        ft_putnbr(va_arg(ap, int));
-    else if (str[i] == 'u')
-        ft_putunbr(va_arg(ap, unsigned int));
+	if (n > 9)
+		ft_putunbr(n / 10);
+	ft_putchar(n % 10 + '0');
 }

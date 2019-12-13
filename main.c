@@ -5,7 +5,10 @@ int main()
 {
     int i;
     int j;
-	j = ft_printf("lolilol%d\n", 11111223);
+    unsigned int l = 4294967295;
+
+    char c = 'l';
+	j = ft_printf("%u\n", l);
     printf("%d", j);
 
 }
