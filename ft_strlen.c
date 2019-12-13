@@ -1,40 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf.c                                        :+:      :+:    :+:   */
+/*   ft_strlen.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mweerts <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/11/25 20:13:16 by mweerts           #+#    #+#             */
-/*   Updated: 2019/12/13 07:32:06 by mweerts          ###   ########.fr       */
+/*   Created: 2019/10/07 09:09:06 by mweerts           #+#    #+#             */
+/*   Updated: 2019/12/13 07:11:57 by mweerts          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libftprintf.h"
 
-int	ft_printf(const char *str, ...)
+size_t	ft_strlen(const char *s)
 {
-    int nb;
-    int i;
-    va_list ap;
+	size_t i;
 
-    nb = 0;
-    i = 0;
-    va_start(ap, str);
-    while (str[i])
-    {
-        while (str[i] && str[i] != '%')
-        {
-            write(1, &str[i], 1);
-            nb++;
-            i++;
-        }
-        if (str[i] == '%')
-        {
-            i++;
-            parse_flags(&str[i++], ap);
-        }
-    }
-    va_end(ap);
-    return (nb);
+	i = 0;
+	while (s[i])
+		i++;
+	return (i);
 }

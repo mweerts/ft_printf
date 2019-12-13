@@ -1,40 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf.c                                        :+:      :+:    :+:   */
+/*   ft_putnbr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mweerts <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/11/25 20:13:16 by mweerts           #+#    #+#             */
-/*   Updated: 2019/12/13 07:32:06 by mweerts          ###   ########.fr       */
+/*   Created: 2019/10/09 20:28:46 by mweerts           #+#    #+#             */
+/*   Updated: 2019/12/13 07:27:55 by mweerts          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libftprintf.h"
 
-int	ft_printf(const char *str, ...)
+void	ft_putnbr(int n)
 {
-    int nb;
-    int i;
-    va_list ap;
-
-    nb = 0;
-    i = 0;
-    va_start(ap, str);
-    while (str[i])
-    {
-        while (str[i] && str[i] != '%')
-        {
-            write(1, &str[i], 1);
-            nb++;
-            i++;
-        }
-        if (str[i] == '%')
-        {
-            i++;
-            parse_flags(&str[i++], ap);
-        }
-    }
-    va_end(ap);
-    return (nb);
+	if (n == -2147483648)
+	{
+		ft_putstr("-2147483648");
+		return ;
+	}
+	if (n < 0)
+	{
+		ft_putchar('-');
+		n *= -1;
+	}
+	if (n > 9)
+		ft_putnbr(n / 10);
+	ft_putchar(n % 10 + '0');
 }
