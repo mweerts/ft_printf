@@ -6,7 +6,7 @@
 /*   By: mweerts <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/07 20:31:57 by mweerts           #+#    #+#             */
-/*   Updated: 2019/11/07 23:13:37 by mweerts          ###   ########.fr       */
+/*   Updated: 2020/01/05 10:20:41 by mweerts          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,7 @@ char			*ft_strjoin(const char *s1, const char *s2);
 char			*ft_strtrim(const char *s1, const char *set);
 char			**ft_split(const char *s, char c);
 char			*ft_itoa(int n);
+char			*ft_uitoa(unsigned int n);
 char			*ft_strmapi(const char *s, char (*f)(unsigned int, char));
 void			ft_putchar_fd(char c, int fd);
 void			ft_putstr_fd(char *s, int fd);

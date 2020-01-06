@@ -6,7 +6,7 @@
 /*   By: mweerts <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/04 15:33:28 by mweerts           #+#    #+#             */
-/*   Updated: 2020/01/05 06:01:02 by mweerts          ###   ########.fr       */
+/*   Updated: 2020/01/06 05:51:24 by mweerts          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,13 +15,13 @@
 t_convert	g_tab[] = {
 	{'c', &get_char},
 	{'s', &get_string},
-	/*{'p', &convert_pointer},
-	{'d', &convert_int},
-	{'i', &convert_int},
-	{'u', &convert_uint},
-	{'x', &convert_hexamin},
-	{'X', &convert_hexamaj},
-	{'%', &convert_percent},*/
+	{'p', &get_pointer},
+	{'d', &get_int},
+	{'i', &get_int},
+	{'u', &get_uint},
+	{'x', &get_hexamin},
+	{'X', &get_hexamaj},
+	{'%', &get_percent},
 	{-1, NULL}};
 
 int ft_printf(const char *str, ...)
