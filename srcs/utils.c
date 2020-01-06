@@ -6,11 +6,21 @@
 /*   By: mweerts <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/05 13:52:33 by mweerts           #+#    #+#             */
-/*   Updated: 2020/01/06 05:53:52 by mweerts          ###   ########.fr       */
+/*   Updated: 2020/01/06 11:32:00 by mweerts          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/libftprintf.h"
+
+int		ft_isformat(int c)
+{
+	if (c == 'c' || c == 's' || c == 'p' || c == 'd'
+		|| c == 'i' || c == 'u' || c == 'x' || c == 'X')
+		{
+			return (1);
+		}
+	return (0);
+}
 
 char    *ft_itoahex(unsigned int nb, int isupper)
 {

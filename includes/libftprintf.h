@@ -6,7 +6,7 @@
 /*   By: mweerts <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/05 05:40:43 by mweerts           #+#    #+#             */
-/*   Updated: 2020/01/06 05:53:04 by mweerts          ###   ########.fr       */
+/*   Updated: 2020/01/06 11:52:05 by mweerts          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,14 @@ typedef	struct	s_convert
 	char		*(*function)(va_list ap);
 }				t_convert;
 
+typedef	struct	s_flag
+{
+	char	minus;
+	char	zero;
+	int		width;
+}				t_flag;
+
+
 int				ft_printf(const char *str, ...);
 char            *get_char(va_list ap);
 char            *get_string(va_list ap);
@@ -35,4 +43,6 @@ char			*get_hexamin(va_list ap);
 char			*get_pointer(va_list ap);
 char			*ft_itoahex(unsigned int nb, int isupper);
 char			*ft_ptoahex(unsigned long nb);
+int				ft_isformat(int c);
+t_flag			parse(const char *str, va_list ap);
 #endif

@@ -6,14 +6,21 @@
 #    By: mweerts <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/01/04 15:35:02 by mweerts           #+#    #+#              #
-#    Updated: 2020/01/05 06:13:41 by mweerts          ###   ########.fr        #
+#    Updated: 2020/01/06 08:25:34 by mweerts          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = libftprintf.a
 SRCS =	srcs/ft_printf.c\
 		srcs/get_char.c\
-		srcs/get_string.c
+		srcs/get_string.c\
+		srcs/get_int.c\
+		srcs/get_uint.c\
+		srcs/get_percent.c\
+		srcs/get_hex.c\
+		srcs/get_pointer.c\
+		srcs/utils.c\
+		srcs/parser.c
 LIBFT_PATH = libft/
 LIBFT = libft.a
 OBJS= $(SRCS:.c=.o)
@@ -46,3 +53,5 @@ fclean:
 		@make fclean -C $(LIBFT_PATH)
 
 re: fclean all
+
+bonus: all
