@@ -6,7 +6,7 @@
 /*   By: mweerts <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/05 05:40:43 by mweerts           #+#    #+#             */
-/*   Updated: 2020/01/05 06:02:12 by mweerts          ###   ########.fr       */
+/*   Updated: 2020/01/06 05:53:04 by mweerts          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,4 +27,12 @@ typedef	struct	s_convert
 int				ft_printf(const char *str, ...);
 char            *get_char(va_list ap);
 char            *get_string(va_list ap);
+char			*get_int(va_list ap);
+char			*get_uint(va_list ap);
+char			*get_percent();
+char			*get_hexamaj(va_list ap);
+char			*get_hexamin(va_list ap);
+char			*get_pointer(va_list ap);
+char			*ft_itoahex(unsigned int nb, int isupper);
+char			*ft_ptoahex(unsigned long nb);
 #endif
