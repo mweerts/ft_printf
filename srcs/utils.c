@@ -6,7 +6,7 @@
 /*   By: mweerts <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/05 13:52:33 by mweerts           #+#    #+#             */
-/*   Updated: 2020/01/08 23:12:38 by mweerts          ###   ########.fr       */
+/*   Updated: 2020/01/08 23:18:34 by mweerts          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,7 +69,7 @@ char	*ft_ptoahex(unsigned long nb)
 	}
 	str[i++] = 'x';
 	str[i++] = '0';
-	str[i] = '\0';
+	str[i--] = '\0';
 	if (!(ret = malloc(sizeof(char) * ft_strlen(str))))
 		return (NULL);
 	j = 0;
