@@ -6,7 +6,7 @@
 /*   By: mweerts <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/05 05:40:43 by mweerts           #+#    #+#             */
-/*   Updated: 2020/01/06 11:52:05 by mweerts          ###   ########.fr       */
+/*   Updated: 2020/01/08 22:00:09 by mweerts          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,12 +29,12 @@ typedef	struct	s_flag
 	char	minus;
 	char	zero;
 	int		width;
+	char	*str;
 }				t_flag;
 
-
 int				ft_printf(const char *str, ...);
-char            *get_char(va_list ap);
-char            *get_string(va_list ap);
+char			*get_char(va_list ap);
+char			*get_string(va_list ap);
 char			*get_int(va_list ap);
 char			*get_uint(va_list ap);
 char			*get_percent();

@@ -6,13 +6,13 @@
 /*   By: mweerts <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/05 10:01:50 by mweerts           #+#    #+#             */
-/*   Updated: 2020/01/05 10:15:26 by mweerts          ###   ########.fr       */
+/*   Updated: 2020/01/07 21:04:13 by mweerts          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/libftprintf.h"
 
-char    *get_percent()
+char	*get_percent(void)
 {
-    return (ft_strdup("%"));
+	return (ft_strdup("%"));
 }

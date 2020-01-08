@@ -6,18 +6,24 @@
 /*   By: mweerts <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/05 10:03:09 by mweerts           #+#    #+#             */
-/*   Updated: 2020/01/06 05:45:31 by mweerts          ###   ########.fr       */
+/*   Updated: 2020/01/07 21:04:05 by mweerts          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/libftprintf.h"
 
-char    *get_hexamaj(va_list ap)
+char	*get_hexamaj(va_list ap)
 {
-    return (ft_itoahex(va_arg(ap, int), 1));
+	int	nbr;
+
+	nbr = va_arg(ap, int);
+	return (ft_itoahex((unsigned int)nbr, 1));
 }
 
-char    *get_hexamin(va_list ap)
+char	*get_hexamin(va_list ap)
 {
-    return (ft_itoahex(va_arg(ap, int), 0));
+	int	nbr;
+
+	nbr = va_arg(ap, int);
+	return (ft_itoahex((unsigned int)nbr, 0));
 }

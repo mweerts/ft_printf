@@ -6,16 +6,16 @@
 /*   By: mweerts <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/05 06:25:11 by mweerts           #+#    #+#             */
-/*   Updated: 2020/01/05 10:22:21 by mweerts          ###   ########.fr       */
+/*   Updated: 2020/01/07 21:04:09 by mweerts          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/libftprintf.h"
 
-char    *get_int(va_list ap)
+char	*get_int(va_list ap)
 {
-    int nbr;
+	int	nbr;
 
-    nbr = va_arg(ap, int);
-    return (ft_itoa(nbr));
+	nbr = va_arg(ap, int);
+	return (ft_itoa(nbr));
 }

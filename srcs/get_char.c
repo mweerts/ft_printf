@@ -6,16 +6,16 @@
 /*   By: mweerts <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/05 05:46:57 by mweerts           #+#    #+#             */
-/*   Updated: 2020/01/05 06:12:59 by mweerts          ###   ########.fr       */
+/*   Updated: 2020/01/07 21:04:03 by mweerts          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/libftprintf.h"
 
-char    *get_char(va_list ap)
+char	*get_char(va_list ap)
 {
-    char    c;
+	char	c;
 
-    c = va_arg(ap, int);
-    return (ft_strdup(&c)); 
+	c = va_arg(ap, int);
+	return (ft_strdup(&c));
 }
