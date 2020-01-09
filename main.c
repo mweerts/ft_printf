@@ -6,10 +6,12 @@ int ft_printf(const char *str, ...);
 
 int main(int argc, char **argv)
 {
-    int str = 10;
-    t_flag test;
-	char *lol = "LOLOLOL";
+    int str = 123456;
+	int one;
+	int two;
 
-    ft_printf("%*d\n", 10, str);
-	printf("%*d\n", 10, str);
+    one = ft_printf("[%-2c]\n", (char)0);
+	two = printf("[%-2c]\n", (char)0);
+
+	printf("Ft_printf = \t%d\nPrintf = \t%d\n", one, two);
 }

@@ -6,7 +6,7 @@
 /*   By: mweerts <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/05 05:40:43 by mweerts           #+#    #+#             */
-/*   Updated: 2020/01/09 00:50:17 by mweerts          ###   ########.fr       */
+/*   Updated: 2020/01/09 14:06:06 by mweerts          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,5 +45,6 @@ char			*get_pointer(va_list ap);
 char			*ft_itoahex(unsigned int nb, int isupper);
 char			*ft_ptoahex(unsigned long nb);
 int				ft_isformat(int c);
-t_flag			parse(const char *str, va_list ap);
+int				ft_atoi_printf(const char *str, int	*width);
+t_flag			parse(const char *str, va_list ap, int	*index);
 #endif

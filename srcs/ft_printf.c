@@ -6,7 +6,7 @@
 /*   By: mweerts <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/04 15:33:28 by mweerts           #+#    #+#             */
-/*   Updated: 2020/01/09 01:01:05 by mweerts          ###   ########.fr       */
+/*   Updated: 2020/01/09 14:31:24 by mweerts          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,19 +37,31 @@ static	void	get_format(char format, va_list ap, t_flag *flag)
 	}
 }
 
-int			ft_print(const char *str, va_list ap)
+int			ft_print(const char *str, va_list ap, int	*index)
 {
-	t_flag flag;
+	t_flag	flag;
+	int		count;
 
-	flag = parse(str, ap);
+	count = 0;
+	flag = parse(str, ap, index);
 	get_format(flag.format, ap, &flag);
-	while (flag.width > (int)ft_strlen(flag.str))
+	while (!flag.minus && flag.width > (int)ft_strlen(flag.str))
+	{
+		flag.width--;
+		if (flag.zero)
+			write(1, "0", 1);
+		else
+			write(1, " ", 1);
+		count++;
+	}
+	ft_putstr_fd(flag.str, 1);
+	while (flag.minus && flag.width > (int)ft_strlen(flag.str))
 	{
 		flag.width--;
 		write(1, " ", 1);
 	}
-	ft_putstr_fd(flag.str, 1);
-	return ((int)ft_strlen(flag.str));
+	count += (int)ft_strlen(flag.str);
+	return (count);
 }
 
 int			ft_printf(const char *str, ...)
@@ -70,8 +82,7 @@ int			ft_printf(const char *str, ...)
 		}
 		else 
 		{
-			i++;
-			count += ft_print(&str[i], ap);
+			count += ft_print(&str[i + 1], ap, &i);
 			/*if (ft_isformat(str[i]))
 				ft_putstr_fd(get_format(str[i], ap), 1);*/
 			
