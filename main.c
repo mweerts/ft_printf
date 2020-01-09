@@ -10,9 +10,7 @@ int main(int argc, char **argv)
 	int one;
 	int two;
 
-    one = ft_printf("%.10s\n", "lol");
-	two = printf("[%.10s]\n", "lol");
-	printf("Ft_printf = \t%d\nPrintf = \t%d\n\n\n\n", one, two);
-
-	write(1, "\0", 1);
+    one = ft_printf("%10s\n", "lol");
+	two = printf("%10s\n", "lol");
+	printf("Ft_printf = \t%d\nPrintf = \t%d\n", one, two);
 }

@@ -6,7 +6,7 @@
 /*   By: mweerts <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/04 15:33:28 by mweerts           #+#    #+#             */
-/*   Updated: 2020/01/09 17:40:59 by mweerts          ###   ########.fr       */
+/*   Updated: 2020/01/09 19:23:39 by mweerts          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,12 +82,7 @@ int			ft_printf(const char *str, ...)
 			count++;
 		}
 		else 
-		{
-			count += ft_print(&str[i + 1], ap, &i);
-			/*if (ft_isformat(str[i]))
-				ft_putstr_fd(get_format(str[i], ap), 1);*/
-			
-		}
+			count += ft_print(&str[i + 1], ap, &i);	
 		i++;
 	}
 	va_end(ap);
