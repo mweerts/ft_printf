@@ -6,7 +6,7 @@
 /*   By: mweerts <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/04 15:33:28 by mweerts           #+#    #+#             */
-/*   Updated: 2020/01/09 14:31:24 by mweerts          ###   ########.fr       */
+/*   Updated: 2020/01/09 17:40:59 by mweerts          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,6 +59,7 @@ int			ft_print(const char *str, va_list ap, int	*index)
 	{
 		flag.width--;
 		write(1, " ", 1);
+		count++;
 	}
 	count += (int)ft_strlen(flag.str);
 	return (count);

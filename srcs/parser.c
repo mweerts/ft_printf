@@ -6,7 +6,7 @@
 /*   By: mweerts <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/06 08:24:45 by mweerts           #+#    #+#             */
-/*   Updated: 2020/01/09 14:24:26 by mweerts          ###   ########.fr       */
+/*   Updated: 2020/01/09 16:39:35 by mweerts          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,8 @@ t_flag			parse(const char *str, va_list ap, int	*index)
 			flag.zero = 1;
 		else if (str[i] == '*')
 			flag.width = (va_arg(ap, int));
+		else if (str[i] == '.')
+			flag.zero = 1;
 		i++;
 	}
 	if (ft_isformat(str[i]))
