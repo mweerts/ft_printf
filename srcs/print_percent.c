@@ -6,7 +6,7 @@
 /*   By: mweerts <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/05 10:01:50 by mweerts           #+#    #+#             */
-/*   Updated: 2020/01/11 14:30:47 by mweerts          ###   ########.fr       */
+/*   Updated: 2020/01/11 14:42:23 by mweerts          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,5 +30,5 @@ int	print_percent(t_flag *flag)
 	}
 	if (!flag->minus)
 		write(1, "%", 1);
-	return (1);
+	return (count);
 }

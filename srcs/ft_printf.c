@@ -6,7 +6,7 @@
 /*   By: mweerts <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/04 15:33:28 by mweerts           #+#    #+#             */
-/*   Updated: 2020/01/11 10:47:08 by mweerts          ###   ########.fr       */
+/*   Updated: 2020/01/11 14:42:08 by mweerts          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,6 @@ t_convert	g_tab[] = {
 	{'u', &get_uint},
 	{'x', &get_hexamin},
 	{'X', &get_hexamaj},*/
-	{'%', &print_percent},
 	{-1, NULL}};
 
 static	int	get_format(char format, va_list ap, t_flag *flag)
@@ -33,6 +32,8 @@ static	int	get_format(char format, va_list ap, t_flag *flag)
 	{
 		if (g_tab[i].c == format)
 			return (g_tab[i].function(ap, flag));
+		else if (format == '%')
+			return (print_percent(flag));
 		i++;
 	}
 	return (-1);
