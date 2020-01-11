@@ -6,7 +6,7 @@
 /*   By: mweerts <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/05 05:40:43 by mweerts           #+#    #+#             */
-/*   Updated: 2020/01/09 14:06:06 by mweerts          ###   ########.fr       */
+/*   Updated: 2020/01/11 09:16:22 by mweerts          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,12 +18,6 @@
 # include "../libft/libft.h"
 # include <stdio.h>
 
-typedef	struct	s_convert
-{
-	char		c;
-	char		*(*function)(va_list ap);
-}				t_convert;
-
 typedef	struct	s_flag
 {
 	char	minus;
@@ -33,8 +27,14 @@ typedef	struct	s_flag
 	char	*str;
 }				t_flag;
 
+typedef	struct	s_convert
+{
+	char		c;
+	int			(*function)(va_list ap, t_flag *flag);
+}				t_convert;
+
 int				ft_printf(const char *str, ...);
-char			*get_char(va_list ap);
+int				print_char(va_list ap, t_flag *flag);
 char			*get_string(va_list ap);
 char			*get_int(va_list ap);
 char			*get_uint(va_list ap);

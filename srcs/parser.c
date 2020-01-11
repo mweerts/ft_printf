@@ -6,7 +6,7 @@
 /*   By: mweerts <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/06 08:24:45 by mweerts           #+#    #+#             */
-/*   Updated: 2020/01/09 16:39:35 by mweerts          ###   ########.fr       */
+/*   Updated: 2020/01/11 09:06:03 by mweerts          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,11 +24,9 @@ static	void	init_flag(t_flag *flag)
 t_flag			parse(const char *str, va_list ap, int	*index)
 {
 	int		i;
-	int		to_pass;
 	t_flag	flag;
 
 	i = 0;
-	to_pass = 0;
 	init_flag(&flag);
 	while (str[i] && !ft_isformat(str[i]))
 	{
@@ -51,7 +49,6 @@ t_flag			parse(const char *str, va_list ap, int	*index)
 		flag.format = str[i];
 		i++;
 	}
-	to_pass += i;
-	*index += to_pass;
+	*index += i;
 	return (flag);
 }

@@ -6,13 +6,13 @@
 #    By: mweerts <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/01/04 15:35:02 by mweerts           #+#    #+#              #
-#    Updated: 2020/01/07 21:04:42 by mweerts          ###   ########.fr        #
+#    Updated: 2020/01/11 09:15:58 by mweerts          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = libftprintf.a
 SRCS =	srcs/ft_printf.c\
-		srcs/get_char.c\
+		srcs/print_char.c\
 		srcs/get_string.c\
 		srcs/get_int.c\
 		srcs/get_uint.c\

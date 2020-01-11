@@ -1,29 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_char.c                                         :+:      :+:    :+:   */
+/*   print_char.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mweerts <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/05 05:46:57 by mweerts           #+#    #+#             */
-/*   Updated: 2020/01/09 17:54:00 by mweerts          ###   ########.fr       */
+/*   Updated: 2020/01/11 09:20:23 by mweerts          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/libftprintf.h"
 
-char	*get_char(va_list ap)
+int	print_char(va_list ap, t_flag *flag)
 {
 	char	c;
-	char 	*str;
+	int		count;
 
 	c = va_arg(ap, int);
-
-	if (c == (char)0)
-		return (ft_strdup(&c));
-	if (!(str = malloc(sizeof(char) * 2)))
-		return (0);
-	str[0] = c;
-	str[1] = '\0';
-	return (str);
+	count = 1;
+	if (flag->minus)
+		write(1, &c, 1);
+	while (flag->width > 1)
+	{
+			write(1, " ", 1);
+		flag->width--;
+		count++;
+	}
+	if (!flag->minus)
+		write(1, &c, 1);
+	return (count);
 }

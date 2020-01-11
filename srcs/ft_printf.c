@@ -6,25 +6,25 @@
 /*   By: mweerts <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/04 15:33:28 by mweerts           #+#    #+#             */
-/*   Updated: 2020/01/09 19:23:39 by mweerts          ###   ########.fr       */
+/*   Updated: 2020/01/11 09:18:58 by mweerts          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/libftprintf.h"
 
 t_convert	g_tab[] = {
-	{'c', &get_char},
-	{'s', &get_string},
+	{'c', &print_char},
+	/*{'s', &get_string},
 	{'p', &get_pointer},
 	{'d', &get_int},
 	{'i', &get_int},
 	{'u', &get_uint},
 	{'x', &get_hexamin},
 	{'X', &get_hexamaj},
-	{'%', &get_percent},
+	{'%', &get_percent},*/
 	{-1, NULL}};
 
-static	void	get_format(char format, va_list ap, t_flag *flag)
+static	int	get_format(char format, va_list ap, t_flag *flag)
 {
 	int	i;
 
@@ -32,20 +32,21 @@ static	void	get_format(char format, va_list ap, t_flag *flag)
 	while (g_tab[i].c != -1)
 	{
 		if (g_tab[i].c == format)
-			flag->str = g_tab[i].function(ap);
+			return (g_tab[i].function(ap, flag));
 		i++;
 	}
+	return (-1);
 }
 
-int			ft_print(const char *str, va_list ap, int	*index)
+static	int		ft_print_flag(const char *str, va_list ap, int	*index)
 {
 	t_flag	flag;
 	int		count;
 
 	count = 0;
 	flag = parse(str, ap, index);
-	get_format(flag.format, ap, &flag);
-	while (!flag.minus && flag.width > (int)ft_strlen(flag.str))
+	count += get_format(flag.format, ap, &flag);
+	/*while (!flag.minus && flag.width > (int)ft_strlen(flag.str))
 	{
 		flag.width--;
 		if (flag.zero)
@@ -61,7 +62,7 @@ int			ft_print(const char *str, va_list ap, int	*index)
 		write(1, " ", 1);
 		count++;
 	}
-	count += (int)ft_strlen(flag.str);
+	count += (int)ft_strlen(flag.str);*/
 	return (count);
 }
 
@@ -82,7 +83,7 @@ int			ft_printf(const char *str, ...)
 			count++;
 		}
 		else 
-			count += ft_print(&str[i + 1], ap, &i);	
+			count += ft_print_flag(&str[i + 1], ap, &i);	
 		i++;
 	}
 	va_end(ap);
