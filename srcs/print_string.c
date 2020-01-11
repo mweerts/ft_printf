@@ -6,7 +6,7 @@
 /*   By: mweerts <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/05 06:01:34 by mweerts           #+#    #+#             */
-/*   Updated: 2020/01/11 12:52:26 by mweerts          ###   ########.fr       */
+/*   Updated: 2020/01/11 12:54:14 by mweerts          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ int	print_string(va_list ap, t_flag *flag)
 	}
 	while (flag->width > len)
 	{
-		if (flag->zero)
+		if (flag->zero && !flag->minus)
 			write(1, "0", 1);
 		else
 			write(1, " ", 1);
