@@ -6,7 +6,7 @@
 /*   By: mweerts <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/05 06:01:34 by mweerts           #+#    #+#             */
-/*   Updated: 2020/01/11 13:08:38 by mweerts          ###   ########.fr       */
+/*   Updated: 2020/01/11 13:15:40 by mweerts          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,9 +38,7 @@ int	print_string(va_list ap, t_flag *flag)
 	else
 		len = ft_strlen(str);
 	if (flag->minus)
-	{
-			count += ft_putstr_len(str, flag->precision);
-	}
+		count += ft_putstr_len(str, flag->precision);
 	while (flag->width > len)
  	{
 		if (flag->zero && !flag->minus)
@@ -51,8 +49,6 @@ int	print_string(va_list ap, t_flag *flag)
 		count++;
 	}
 	if (!flag->minus)
-	{
-			count += ft_putstr_len(str, flag->precision);
-	}
+		count += ft_putstr_len(str, flag->precision);
 	return (count);
 }
