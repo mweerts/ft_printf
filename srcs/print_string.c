@@ -6,7 +6,7 @@
 /*   By: mweerts <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/05 06:01:34 by mweerts           #+#    #+#             */
-/*   Updated: 2020/01/11 12:59:22 by mweerts          ###   ########.fr       */
+/*   Updated: 2020/01/11 13:02:48 by mweerts          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,12 +29,14 @@ int	print_string(va_list ap, t_flag *flag)
 	int		len;
 	int		count;
 
+	count = 0;
 	str = va_arg(ap, char*);
 	if (str == NULL)
 		len = 6;
+	else if (flag->precision != -1 && (int)ft_strlen(str) > flag->precision)
+		len = flag->precision;
 	else
 		len = ft_strlen(str);
-	count = 0;
 	if (flag->minus)
 	{
 		if (str)
