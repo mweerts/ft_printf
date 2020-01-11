@@ -10,7 +10,7 @@ int main(int argc, char **argv)
 	int one;
 	int two;
 
-    one = ft_printf("%.5s\n", "tubular");
+    one = ft_printf("%.6s\n", "hi low");
 	two = printf("%.5s\n", "tubular");
 	printf("Ft_printf = \t%d\nPrintf = \t%d\n", one, two);
 }

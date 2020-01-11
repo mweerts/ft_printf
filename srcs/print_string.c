@@ -6,17 +6,23 @@
 /*   By: mweerts <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/05 06:01:34 by mweerts           #+#    #+#             */
-/*   Updated: 2020/01/11 11:08:35 by mweerts          ###   ########.fr       */
+/*   Updated: 2020/01/11 12:42:15 by mweerts          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/libftprintf.h"
 
-static	int	ft_putstr_len(const char *str, int len)
+static	int	ft_putstr_len(const char *str, int max)
 {
-	write(1, str, len);
-	return (len);
+	if (max != -1)
+	{
+		write(1, str, max);
+		return (max);
+	}
+	write(1, str, ft_strlen(str));
+	return (ft_strlen(str));
 }
+
 int	print_string(va_list ap, t_flag *flag)
 {
 	char	*str;
