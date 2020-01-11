@@ -6,7 +6,7 @@
 /*   By: mweerts <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/05 06:01:34 by mweerts           #+#    #+#             */
-/*   Updated: 2020/01/11 14:19:59 by mweerts          ###   ########.fr       */
+/*   Updated: 2020/01/11 14:21:51 by mweerts          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,6 @@ static	int		ft_putstr_len(const char *str, int max)
 
 int				print_string(va_list ap, t_flag *flag)
 {
-	char	*strap;
 	char	*str;
 	int		len;
 	int		count;
@@ -59,7 +58,6 @@ int				print_string(va_list ap, t_flag *flag)
 	}
 	if (!flag->minus)
 		count += ft_putstr_len(str, flag->precision);
-	if (strap == NULL)
-		free(str);
+	free(str);
 	return (count);
 }
