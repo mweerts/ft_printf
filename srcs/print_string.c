@@ -6,12 +6,17 @@
 /*   By: mweerts <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/05 06:01:34 by mweerts           #+#    #+#             */
-/*   Updated: 2020/01/11 10:55:54 by mweerts          ###   ########.fr       */
+/*   Updated: 2020/01/11 11:08:35 by mweerts          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/libftprintf.h"
 
+static	int	ft_putstr_len(const char *str, int len)
+{
+	write(1, str, len);
+	return (len);
+}
 int	print_string(va_list ap, t_flag *flag)
 {
 	char	*str;
@@ -23,13 +28,13 @@ int	print_string(va_list ap, t_flag *flag)
 		len = 6;
 	else
 		len = ft_strlen(str);
-	count = len;
+	count = 0;
 	if (flag->minus)
 	{
 		if (str)
-			ft_putstr_fd(str, 1);
+			count += ft_putstr_len(str, flag->precision);
 		else
-			ft_putstr_fd("(null)", 1);
+			count += ft_putstr_len("(null)", 6);
 	}
 	while (flag->width > len)
 	{
@@ -40,9 +45,9 @@ int	print_string(va_list ap, t_flag *flag)
 	if (!flag->minus)
 	{
 		if (str)
-			ft_putstr_fd(str, 1);
+			count += ft_putstr_len(str, flag->precision);
 		else
-			ft_putstr_fd("(null)", 1);
+			count += ft_putstr_len("(null)", 6);
 	}
 	return (count);
 }

@@ -6,7 +6,7 @@
 /*   By: mweerts <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/06 08:24:45 by mweerts           #+#    #+#             */
-/*   Updated: 2020/01/11 09:06:03 by mweerts          ###   ########.fr       */
+/*   Updated: 2020/01/11 11:06:13 by mweerts          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@ static	void	init_flag(t_flag *flag)
 	flag->minus = 0;
 	flag->zero = 0;
 	flag->width = -1;
+	flag->precision = -1;
 	flag->format = 0;
 	flag->str = NULL;
 }
@@ -41,7 +42,10 @@ t_flag			parse(const char *str, va_list ap, int	*index)
 		else if (str[i] == '*')
 			flag.width = (va_arg(ap, int));
 		else if (str[i] == '.')
-			flag.zero = 1;
+		{
+			i++;
+			i += ft_atoi_printf(&str[i], &flag.precision) - 1;
+		}
 		i++;
 	}
 	if (ft_isformat(str[i]))
