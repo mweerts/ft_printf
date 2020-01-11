@@ -10,7 +10,7 @@ int main(int argc, char **argv)
 	int one;
 	int two;
 
-    one = ft_printf("%-10c\n", (char)0);
-	two = printf("%-10c\n", (char)0);
+    one = ft_printf("%%%10c%c\n", (char)0, 'a');
+	two = printf("%%%10c%c\n", (char)0, 'a');
 	printf("Ft_printf = \t%d\nPrintf = \t%d\n", one, two);
 }

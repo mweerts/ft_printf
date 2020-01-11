@@ -6,7 +6,7 @@
 /*   By: mweerts <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/05 05:40:43 by mweerts           #+#    #+#             */
-/*   Updated: 2020/01/11 09:16:22 by mweerts          ###   ########.fr       */
+/*   Updated: 2020/01/11 09:33:44 by mweerts          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ int				print_char(va_list ap, t_flag *flag);
 char			*get_string(va_list ap);
 char			*get_int(va_list ap);
 char			*get_uint(va_list ap);
-char			*get_percent();
+int				print_percent();
 char			*get_hexamaj(va_list ap);
 char			*get_hexamin(va_list ap);
 char			*get_pointer(va_list ap);

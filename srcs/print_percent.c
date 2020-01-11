@@ -1,18 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_percent.c                                      :+:      :+:    :+:   */
+/*   print_percent.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mweerts <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/05 10:01:50 by mweerts           #+#    #+#             */
-/*   Updated: 2020/01/09 12:06:56 by mweerts          ###   ########.fr       */
+/*   Updated: 2020/01/11 09:33:03 by mweerts          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/libftprintf.h"
 
-char	*get_percent(void)
+int	print_percent(void)
 {
-	return (ft_strdup("%"));
+	write(1, "%", 1);
+	return (1);
 }

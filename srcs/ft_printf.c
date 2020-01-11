@@ -6,7 +6,7 @@
 /*   By: mweerts <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/04 15:33:28 by mweerts           #+#    #+#             */
-/*   Updated: 2020/01/11 09:18:58 by mweerts          ###   ########.fr       */
+/*   Updated: 2020/01/11 09:34:01 by mweerts          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,8 @@ t_convert	g_tab[] = {
 	{'i', &get_int},
 	{'u', &get_uint},
 	{'x', &get_hexamin},
-	{'X', &get_hexamaj},
-	{'%', &get_percent},*/
+	{'X', &get_hexamaj},*/
+	{'%', &print_percent},
 	{-1, NULL}};
 
 static	int	get_format(char format, va_list ap, t_flag *flag)
