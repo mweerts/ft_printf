@@ -6,13 +6,23 @@
 /*   By: mweerts <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/05 06:01:34 by mweerts           #+#    #+#             */
-/*   Updated: 2020/01/11 13:25:16 by mweerts          ###   ########.fr       */
+/*   Updated: 2020/01/11 14:19:59 by mweerts          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/libftprintf.h"
 
-static	int	ft_putstr_len(const char *str, int max)
+static	char	*get_string(va_list ap)
+{
+	char	*str;
+
+	str = va_arg(ap, char*);
+	if (str == NULL)
+		return (ft_strdup("(null)"));
+	return (ft_strdup(str));
+}
+
+static	int		ft_putstr_len(const char *str, int max)
 {
 	if (max != -1 && (int)ft_strlen(str) > max)
 	{
@@ -23,7 +33,7 @@ static	int	ft_putstr_len(const char *str, int max)
 	return (ft_strlen(str));
 }
 
-int	print_string(va_list ap, t_flag *flag)
+int				print_string(va_list ap, t_flag *flag)
 {
 	char	*strap;
 	char	*str;
@@ -31,10 +41,7 @@ int	print_string(va_list ap, t_flag *flag)
 	int		count;
 
 	count = 0;
-	strap = va_arg(ap, char*);
-	str = strap;
-	if (str == NULL)
-		str = ft_strdup("(null)");
+	str = get_string(ap);
 	if (flag->precision != -1 && (int)ft_strlen(str) > flag->precision)
 		len = flag->precision;
 	else
