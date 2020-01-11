@@ -6,11 +6,11 @@ int ft_printf(const char *str, ...);
 
 int main(int argc, char **argv)
 {
-    int str = 123456;
+    char *str = NULL;
 	int one;
 	int two;
 
-    one = ft_printf("%%%10c%c\n", (char)0, 'a');
-	two = printf("%%%10c%c\n", (char)0, 'a');
+    one = ft_printf("%10s\n", NULL);
+	two = printf("%10s\n", str);
 	printf("Ft_printf = \t%d\nPrintf = \t%d\n", one, two);
 }

@@ -6,7 +6,7 @@
 /*   By: mweerts <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/05 05:40:43 by mweerts           #+#    #+#             */
-/*   Updated: 2020/01/11 09:33:44 by mweerts          ###   ########.fr       */
+/*   Updated: 2020/01/11 10:47:33 by mweerts          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ typedef	struct	s_convert
 
 int				ft_printf(const char *str, ...);
 int				print_char(va_list ap, t_flag *flag);
-char			*get_string(va_list ap);
+int				print_string(va_list ap, t_flag *flag);
 char			*get_int(va_list ap);
 char			*get_uint(va_list ap);
 int				print_percent();
