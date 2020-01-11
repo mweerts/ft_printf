@@ -6,7 +6,7 @@
 /*   By: mweerts <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/05 06:01:34 by mweerts           #+#    #+#             */
-/*   Updated: 2020/01/11 12:54:14 by mweerts          ###   ########.fr       */
+/*   Updated: 2020/01/11 12:59:22 by mweerts          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 static	int	ft_putstr_len(const char *str, int max)
 {
-	if (max != -1)
+	if (max != -1 && (int)ft_strlen(str) > max)
 	{
 		write(1, str, max);
 		return (max);
