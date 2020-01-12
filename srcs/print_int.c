@@ -6,7 +6,7 @@
 /*   By: mweerts <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/05 06:25:11 by mweerts           #+#    #+#             */
-/*   Updated: 2020/01/12 07:34:04 by mweerts          ###   ########.fr       */
+/*   Updated: 2020/01/12 07:36:15 by mweerts          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,8 @@ int				print_int(va_list ap, t_flag *flag)
 	char	*str;
 
 	str = get_int(ap);
+	if (str[0] == '-')
+		flag->plus = 0;
 	count = ft_strlen(str) + flag->plus;
 	if (flag->minus)
 	{	
