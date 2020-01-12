@@ -6,7 +6,7 @@
 /*   By: mweerts <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/05 06:25:11 by mweerts           #+#    #+#             */
-/*   Updated: 2020/01/12 07:30:12 by mweerts          ###   ########.fr       */
+/*   Updated: 2020/01/12 07:34:04 by mweerts          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,14 +26,14 @@ int				print_int(va_list ap, t_flag *flag)
 	char	*str;
 
 	str = get_int(ap);
-	count = ft_strlen(str);
-	if (flag->plus)
-	{
-		write(1, "+", 1);
-		count++;
-	}
+	count = ft_strlen(str) + flag->plus;
 	if (flag->minus)
+	{	
+		if (flag->plus)
+			write(1, "+", 1);
 		ft_putstr_fd(str, 1);
+	}
+
 	while (flag->width > count)
  	{
 		if (flag->zero && !flag->minus)
@@ -43,7 +43,11 @@ int				print_int(va_list ap, t_flag *flag)
 		count++;
 	}
 	if (!flag->minus)
-		ft_putstr_fd(str ,1); 
+	{	
+		if (flag->plus)
+			write(1, "+", 1);
+		ft_putstr_fd(str, 1);
+	}
 	free(str);
 	return (count);
 }
