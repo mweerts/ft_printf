@@ -6,18 +6,35 @@
 /*   By: mweerts <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/05 06:25:11 by mweerts           #+#    #+#             */
-/*   Updated: 2020/01/12 07:36:15 by mweerts          ###   ########.fr       */
+/*   Updated: 2020/01/12 09:09:26 by mweerts          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/libftprintf.h"
 
-static	char	*get_int(va_list ap)
+static	char	*get_int(va_list ap, t_flag *flag)
 {
-	int	nbr;
+	int		nbr;
+	char	*str1;
+	char 	*str2;
+	int		i;
+	int		j;
 
 	nbr = va_arg(ap, int);
-	return (ft_itoa(nbr));
+	str1 = ft_itoa(nbr);
+	str2 = str1;
+	i = flag->precision - ft_strlen(str1);
+	j = 0;
+	if (i > 0)
+	{
+		if (!(str2 = malloc(sizeof(char) * (flag->precision + 1))))
+			return (NULL);
+		ft_memset(str2, '0', i);
+		while (str1[j])
+			str2[i++] = str1[j++];
+		str2[i] = '\0';
+	}
+	return (str2);
 }
 
 int				print_int(va_list ap, t_flag *flag)
@@ -25,7 +42,7 @@ int				print_int(va_list ap, t_flag *flag)
 	int 	count;
 	char	*str;
 
-	str = get_int(ap);
+	str = get_int(ap, flag);
 	if (str[0] == '-')
 		flag->plus = 0;
 	count = ft_strlen(str) + flag->plus;
@@ -35,7 +52,6 @@ int				print_int(va_list ap, t_flag *flag)
 			write(1, "+", 1);
 		ft_putstr_fd(str, 1);
 	}
-
 	while (flag->width > count)
  	{
 		if (flag->zero && !flag->minus)
