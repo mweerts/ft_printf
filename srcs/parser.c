@@ -6,7 +6,7 @@
 /*   By: mweerts <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/06 08:24:45 by mweerts           #+#    #+#             */
-/*   Updated: 2020/01/11 11:06:13 by mweerts          ###   ########.fr       */
+/*   Updated: 2020/01/12 07:21:48 by mweerts          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 static	void	init_flag(t_flag *flag)
 {
 	flag->minus = 0;
+	flag->plus = 0;
 	flag->zero = 0;
 	flag->width = -1;
 	flag->precision = -1;
@@ -37,6 +38,8 @@ t_flag			parse(const char *str, va_list ap, int	*index)
 		}
 		else if (str[i] == '-')
 			flag.minus = 1;
+		else if (str[i] == '+')
+			flag.plus = 1;
 		else if (str[i] == '0' && !ft_isdigit(str[i - 1]))
 			flag.zero = 1;
 		else if (str[i] == '*')
