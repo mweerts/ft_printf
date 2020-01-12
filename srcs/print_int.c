@@ -6,35 +6,61 @@
 /*   By: mweerts <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/05 06:25:11 by mweerts           #+#    #+#             */
-/*   Updated: 2020/01/12 09:09:26 by mweerts          ###   ########.fr       */
+/*   Updated: 2020/01/12 11:52:13 by mweerts          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/libftprintf.h"
 
+static int		ft_intlen(int n)
+{	int nb_char;
+
+	nb_char = 0;
+	if (n == 0)
+		return (1);
+	while (n != 0)
+	{
+		n /= 10;
+		nb_char++;
+	}
+	return (nb_char);
+}
+
+static	char	*ft_itoa_printf(int n, int precision)
+{
+	char	*str;
+	int		is_neg;
+	int		i;
+
+	i = (ft_intlen(n) < precision) ? precision : ft_intlen(n);
+	is_neg = (n < 0) ? 1 : 0;
+	if (!(str = malloc(sizeof(char) * (i + is_neg + 1))))
+		return (NULL);
+	ft_memset(str, '0', i + is_neg);
+	str[i + 1] = '\0';
+	if (n < 0)
+		str[0] = '-';
+	if (n < 0)
+		n = -n;
+	else if (n == 0)
+		str[0] = '0';
+	else
+		i--;
+	while (n != 0)
+	{
+		str[i] = (n % 10) + '0';
+		n /= 10;
+		i--;
+	}
+	return (str);
+}
+
 static	char	*get_int(va_list ap, t_flag *flag)
 {
 	int		nbr;
-	char	*str1;
-	char 	*str2;
-	int		i;
-	int		j;
 
 	nbr = va_arg(ap, int);
-	str1 = ft_itoa(nbr);
-	str2 = str1;
-	i = flag->precision - ft_strlen(str1);
-	j = 0;
-	if (i > 0)
-	{
-		if (!(str2 = malloc(sizeof(char) * (flag->precision + 1))))
-			return (NULL);
-		ft_memset(str2, '0', i);
-		while (str1[j])
-			str2[i++] = str1[j++];
-		str2[i] = '\0';
-	}
-	return (str2);
+	return (ft_itoa_printf(nbr, flag->precision));
 }
 
 int				print_int(va_list ap, t_flag *flag)
