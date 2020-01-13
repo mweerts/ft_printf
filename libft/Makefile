@@ -6,7 +6,7 @@
 #    By: mweerts <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/10/07 20:17:58 by mweerts           #+#    #+#              #
-#    Updated: 2020/01/05 10:20:58 by mweerts          ###   ########.fr        #
+#    Updated: 2020/01/13 07:49:37 by mweerts          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -40,12 +40,16 @@ SRCS =	ft_memset.c\
 		ft_strtrim.c\
 		ft_split.c\
 		ft_itoa.c\
-		ft_uitoa.c\
 		ft_strmapi.c\
 		ft_putchar_fd.c\
 		ft_putstr_fd.c\
 		ft_putendl_fd.c\
-		ft_putnbr_fd.c
+		ft_putnbr_fd.c\
+		ft_uitoa.c\
+		ft_str_create.c\
+		ft_strjoin_free.c\
+		ft_putchar.c\
+		ft_putstr.c
 
 SRCS_BONUS =	ft_lstnew_bonus.c\
 				ft_lstadd_front_bonus.c\

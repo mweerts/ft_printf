@@ -6,7 +6,7 @@
 /*   By: mweerts <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/05 10:01:50 by mweerts           #+#    #+#             */
-/*   Updated: 2020/01/11 14:44:03 by mweerts          ###   ########.fr       */
+/*   Updated: 2020/01/13 08:07:32 by mweerts          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,17 +18,15 @@ int	print_percent(t_flag *flag)
 
 	count = 1;
 	if (flag->minus)
-		write(1, "%", 1);
-	while (flag->width > 1)
+		ft_putchar('%');
+	while (flag->width > count)
 	{
 		if (flag->zero && !flag->minus)
-			write(1, "0", 1);
+			count += ft_putchar('0');
 		else
-			write(1, " ", 1);
-		flag->width--;
-		count++;
+			count += ft_putchar(' ');
 	}
 	if (!flag->minus)
-		write(1, "%", 1);
+		ft_putchar('%');
 	return (count);
 }

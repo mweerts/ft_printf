@@ -1,29 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   print_char.c                                       :+:      :+:    :+:   */
+/*   ft_strjoin_free.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mweerts <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/01/05 05:46:57 by mweerts           #+#    #+#             */
-/*   Updated: 2020/01/13 08:08:30 by mweerts          ###   ########.fr       */
+/*   Created: 2020/01/13 07:39:31 by mweerts           #+#    #+#             */
+/*   Updated: 2020/01/13 07:41:27 by mweerts          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/libftprintf.h"
+#include "libft.h"
 
-int	print_char(va_list ap, t_flag *flag)
+char    *ft_strjoin_free(char *s1, char *s2)
 {
-	char	c;
-	int		count;
+    	int		i;
+	int		j;
+	char	*ret;
 
-	c = va_arg(ap, int);
-	count = 1;
-	if (flag->minus)
-		ft_putchar(&c);
-	while (flag->width > count)
-		count += ft_putchar(' ');
-	if (!flag->minus)
-		ft_putchar(&c);
-	return (count);
+	i = 0;
+	j = 0;
+	if (s1 == NULL || s2 == NULL)
+		return (NULL);
+	ret = malloc(sizeof(char) * (ft_strlen(s1) + ft_strlen(s2) + 1));
+	if (ret == NULL)
+		return (NULL);
+	while (s1[i])
+	{
+		ret[i] = s1[i];
+		i++;
+	}
+	while (s2[j])
+		ret[i++] = s2[j++];
+	ret[i] = '\0';
+    free(s1);
+    free(s2);
+	return (ret);
 }

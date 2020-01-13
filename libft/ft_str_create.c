@@ -1,29 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   print_char.c                                       :+:      :+:    :+:   */
+/*   ft_str_create.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mweerts <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/01/05 05:46:57 by mweerts           #+#    #+#             */
-/*   Updated: 2020/01/13 08:08:30 by mweerts          ###   ########.fr       */
+/*   Created: 2020/01/13 07:35:22 by mweerts           #+#    #+#             */
+/*   Updated: 2020/01/13 07:37:01 by mweerts          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/libftprintf.h"
+#include "libft.h"
 
-int	print_char(va_list ap, t_flag *flag)
+char    *ft_str_create(int c, int len)
 {
-	char	c;
-	int		count;
+    char    *str;
 
-	c = va_arg(ap, int);
-	count = 1;
-	if (flag->minus)
-		ft_putchar(&c);
-	while (flag->width > count)
-		count += ft_putchar(' ');
-	if (!flag->minus)
-		ft_putchar(&c);
-	return (count);
+    if (!(str = malloc(sizeof(char) * (len + 1))))
+        return (NULL);
+    ft_memset(str, c, len);
+    str[len] = '\0';
+    return (str);
 }

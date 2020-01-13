@@ -1,29 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   print_char.c                                       :+:      :+:    :+:   */
+/*   ft_putchar.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mweerts <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/01/05 05:46:57 by mweerts           #+#    #+#             */
-/*   Updated: 2020/01/13 08:08:30 by mweerts          ###   ########.fr       */
+/*   Created: 2020/01/13 07:47:24 by mweerts           #+#    #+#             */
+/*   Updated: 2020/01/13 07:48:00 by mweerts          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/libftprintf.h"
+#include "libft.h"
 
-int	print_char(va_list ap, t_flag *flag)
+int ft_putchar(char c)
 {
-	char	c;
-	int		count;
-
-	c = va_arg(ap, int);
-	count = 1;
-	if (flag->minus)
-		ft_putchar(&c);
-	while (flag->width > count)
-		count += ft_putchar(' ');
-	if (!flag->minus)
-		ft_putchar(&c);
-	return (count);
+    write(1, &c, 1);
+    return (1);
 }

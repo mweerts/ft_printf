@@ -6,7 +6,7 @@
 /*   By: mweerts <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/07 20:31:57 by mweerts           #+#    #+#             */
-/*   Updated: 2020/01/05 10:20:41 by mweerts          ###   ########.fr       */
+/*   Updated: 2020/01/13 07:49:25 by mweerts          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,6 @@ char			*ft_strjoin(const char *s1, const char *s2);
 char			*ft_strtrim(const char *s1, const char *set);
 char			**ft_split(const char *s, char c);
 char			*ft_itoa(int n);
-char			*ft_uitoa(unsigned int n);
 char			*ft_strmapi(const char *s, char (*f)(unsigned int, char));
 void			ft_putchar_fd(char c, int fd);
 void			ft_putstr_fd(char *s, int fd);
@@ -67,4 +66,9 @@ void			ft_lstdelone(t_list *lst, void (*del)(void *));
 void			ft_lstclear(t_list **lst, void (*del)(void *));
 void			ft_lstiter(t_list *lst, void (*f)(void *));
 t_list			*ft_lstmap(t_list *l, void *(*f)(void *), void (*del)(void *));
+char			*ft_uitoa(unsigned int n);
+char			*ft_str_create(int c, int len);
+char			*ft_strjoin_free(char *s1, char *s2);
+int				ft_putchar(char c);
+int				ft_putstr(char *str);
 #endif

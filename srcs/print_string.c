@@ -6,7 +6,7 @@
 /*   By: mweerts <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/05 06:01:34 by mweerts           #+#    #+#             */
-/*   Updated: 2020/01/11 14:21:51 by mweerts          ###   ########.fr       */
+/*   Updated: 2020/01/13 07:52:09 by mweerts          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,10 @@ static	char	*get_string(va_list ap)
 	return (ft_strdup(str));
 }
 
-static	int		ft_putstr_len(const char *str, int max)
+static	int		ft_putstr_max(const char *str, int max)
 {
+	if (!str)
+		return (0);
 	if (max != -1 && (int)ft_strlen(str) > max)
 	{
 		write(1, str, max);
@@ -34,8 +36,7 @@ static	int		ft_putstr_len(const char *str, int max)
 }
 
 int				print_string(va_list ap, t_flag *flag)
-{
-	char	*str;
+{	char	*str;
 	int		len;
 	int		count;
 
@@ -46,18 +47,17 @@ int				print_string(va_list ap, t_flag *flag)
 	else
 		len = ft_strlen(str);
 	if (flag->minus)
-		count += ft_putstr_len(str, flag->precision);
+		count += ft_putstr_max(str, flag->precision);
 	while (flag->width > len)
  	{
 		if (flag->zero && !flag->minus)
-			write(1, "0", 1);
+			count += ft_putchar('0');
 		else
-			write(1, " ", 1);
+			count += ft_putchar(' ');
 		flag->width--;
-		count++;
 	}
 	if (!flag->minus)
-		count += ft_putstr_len(str, flag->precision);
+		count += ft_putstr_max(str, flag->precision);
 	free(str);
 	return (count);
 }
