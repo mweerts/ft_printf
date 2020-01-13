@@ -6,7 +6,7 @@
 /*   By: mweerts <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/13 07:45:48 by mweerts           #+#    #+#             */
-/*   Updated: 2020/01/13 10:47:14 by mweerts          ###   ########.fr       */
+/*   Updated: 2020/01/13 10:49:13 by mweerts          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,14 +48,10 @@ int print_int(va_list ap, t_flag *flag)
 
     nbr = get_number(ap, flag);
     count = nbr.len;
+    if (nbr.len == 1 && nbr.str[0] == '0')
+        count = 0;
     if (nbr.sign == '-' || flag->plus)
         count++;
-  /*  if (flag->width == -1)
-    {
-        put_sign(nbr.sign, flag);
-        put_nbr(nbr);
-        return (count);
-    }*/
     if (flag->minus || (flag->zero && flag->precision == -1))
         put_sign(nbr.sign, flag);
     if (flag->minus && flag->precision != 0)
