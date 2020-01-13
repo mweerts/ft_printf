@@ -10,8 +10,8 @@ int main(int argc, char **argv)
 	int one;
 	int two;
 
-	one = ft_printf("%10.5d\n%-10.5d\n", 123, -123);
-	two = printf("%10.5d\n%-10.5d\n", 123, -123);
+	one = ft_printf("%+2.1d\n", 0);
+	two = printf("%+2.1d\n", 0);
     printf("Ft_printf = \t%d\nPrintf = \t%d\n", one, two);
    //printf("%s", ft_str_create('a', 3));
 }
