@@ -6,7 +6,7 @@
 /*   By: mweerts <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/06 08:24:45 by mweerts           #+#    #+#             */
-/*   Updated: 2020/01/13 11:18:30 by mweerts          ###   ########.fr       */
+/*   Updated: 2020/01/13 11:44:19 by mweerts          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ t_flag			parse(const char *str, va_list ap, int	*index)
 	init_flag(&flag);
 	while (str[i] && !ft_isformat(str[i]))
 	{
-		if (ft_isdigit(str[i]) && !(str[i] == '0' && ft_isdigit(str[i + 1])))
+		if (ft_isdigit(str[i]) && str[i] != '0')
 		{
 			i += ft_atoi_printf(&str[i], &flag.width) - 1;
 		}
@@ -45,7 +45,7 @@ t_flag			parse(const char *str, va_list ap, int	*index)
 			flag.minus = 1;
 		else if (str[i] == '+')
 			flag.plus = 1;
-		else if (str[i] == '0' && !ft_isdigit(str[i - 1]))
+		else if (str[i] == '0')
 			flag.zero = 1;
 		else if (str[i] == '*')
 			flag.width = (va_arg(ap, int));
