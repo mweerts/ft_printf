@@ -6,7 +6,7 @@
 /*   By: mweerts <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/04 15:33:28 by mweerts           #+#    #+#             */
-/*   Updated: 2020/01/13 11:39:34 by mweerts          ###   ########.fr       */
+/*   Updated: 2020/01/13 13:29:02 by mweerts          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ t_convert	g_tab[] = {
 	//{'p', &get_pointer},
 	{'d', &print_int},
 	{'i', &print_int},
-	//{'u', &get_uint},
+	{'u', &print_uint},
 //	{'x', &get_hexamin},
 	//{'X', &get_hexamaj},
 	{-1, NULL}};
@@ -47,23 +47,6 @@ static	int		ft_print_flag(const char *str, va_list ap, int	*index)
 	count = 0;
 	flag = parse(str, ap, index);
 	count += get_format(flag.format, ap, &flag);
-	/*while (!flag.minus && flag.width > (int)ft_strlen(flag.str))
-	{
-		flag.width--;
-		if (flag.zero)
-			write(1, "0", 1);
-		else
-			write(1, " ", 1);
-		count++;
-	}
-	ft_putstr_fd(flag.str, 1);
-	while (flag.minus && flag.width > (int)ft_strlen(flag.str))
-	{
-		flag.width--;
-		write(1, " ", 1);
-		count++;
-	}
-	count += (int)ft_strlen(flag.str);*/
 	return (count);
 }
 

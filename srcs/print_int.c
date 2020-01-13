@@ -6,11 +6,38 @@
 /*   By: mweerts <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/13 07:45:48 by mweerts           #+#    #+#             */
-/*   Updated: 2020/01/13 13:26:27 by mweerts          ###   ########.fr       */
+/*   Updated: 2020/01/13 13:36:44 by mweerts          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/libftprintf.h"
+
+static  t_number	get_number(va_list ap, t_flag *flag)
+{
+    t_number		number;
+    long	long	nbr;
+
+    number.len = 0;
+	nbr = 0;
+    if (flag->l)
+        nbr = (long long)va_arg(ap, long int);
+	else if (flag->ll)
+	    nbr = va_arg(ap, long long int);
+	else if (flag->h)
+	    nbr = (long long)(short int)va_arg(ap, int);
+	else if (flag->hh)
+	    nbr = (long long)(char)va_arg(ap, int);
+	else	
+	    nbr = (long long)va_arg(ap, int);
+    number.sign = '+';
+    if (nbr < 0)
+    {
+        nbr = -nbr;
+        number.sign = '-';
+    }
+	ft_longlongtoa(nbr, &number, flag->precision);
+    return (number);
+}
 
 static  int put_sign(char sign, t_flag *flag)
 {

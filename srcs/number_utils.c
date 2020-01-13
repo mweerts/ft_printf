@@ -6,7 +6,7 @@
 /*   By: mweerts <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/13 08:23:07 by mweerts           #+#    #+#             */
-/*   Updated: 2020/01/13 12:25:44 by mweerts          ###   ########.fr       */
+/*   Updated: 2020/01/13 13:36:28 by mweerts          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ static  int		longlong_len(long long nbr)
     return (count);
 }
 
-static  int	ft_longlongtoa(long long nbr, t_number	*number, int precision)
+int	ft_longlongtoa(long long nbr, t_number	*number, int precision)
 {
 	char	*str;
 	int		i;
@@ -49,31 +49,4 @@ static  int	ft_longlongtoa(long long nbr, t_number	*number, int precision)
 	}
 	number->str = str;
 	return (1);
-}
-
-t_number		get_number(va_list ap, t_flag *flag)
-{
-    t_number		number;
-    long	long	nbr;
-
-    number.len = 0;
-	nbr = 0;
-    if (flag->l)
-        nbr = (long long)va_arg(ap, long int);
-	else if (flag->ll)
-	    nbr = va_arg(ap, long long int);
-	else if (flag->h)
-	    nbr = (long long)(short int)va_arg(ap, int);
-	else if (flag->hh)
-	    nbr = (long long)(char)va_arg(ap, int);
-	else	
-	    nbr = (long long)va_arg(ap, int);
-    number.sign = '+';
-    if (nbr < 0)
-    {
-        nbr = -nbr;
-        number.sign = '-';
-    }
-	ft_longlongtoa(nbr, &number, flag->precision);
-    return (number);
 }

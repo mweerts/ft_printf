@@ -6,7 +6,7 @@
 #    By: mweerts <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/01/04 15:35:02 by mweerts           #+#    #+#              #
-#    Updated: 2020/01/13 08:24:30 by mweerts          ###   ########.fr        #
+#    Updated: 2020/01/13 13:29:38 by mweerts          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,7 +15,7 @@ SRCS =	srcs/ft_printf.c\
 		srcs/print_char.c\
 		srcs/print_string.c\
 		srcs/print_int.c\
-		srcs/get_uint.c\
+		srcs/print_uint.c\
 		srcs/print_percent.c\
 		srcs/get_hex.c\
 		srcs/get_pointer.c\
