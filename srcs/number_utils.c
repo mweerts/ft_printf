@@ -6,7 +6,7 @@
 /*   By: mweerts <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/13 08:23:07 by mweerts           #+#    #+#             */
-/*   Updated: 2020/01/13 10:17:28 by mweerts          ###   ########.fr       */
+/*   Updated: 2020/01/13 10:33:55 by mweerts          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,6 +58,7 @@ t_number		get_number(va_list ap, t_flag *flag)
 
 
     number.len = 0;
+	nbr = 0;
     if (flag->format == 'i' || flag->format == 'd')
         nbr = (long long)va_arg(ap, int);
     number.sign = '+';
