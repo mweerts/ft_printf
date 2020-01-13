@@ -6,7 +6,7 @@
 /*   By: mweerts <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/05 05:40:43 by mweerts           #+#    #+#             */
-/*   Updated: 2020/01/12 07:21:25 by mweerts          ###   ########.fr       */
+/*   Updated: 2020/01/13 09:59:56 by mweerts          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,13 @@ typedef	struct	s_convert
 	int			(*function)(va_list ap, t_flag *flag);
 }				t_convert;
 
+typedef struct 	s_number
+{
+	char		*str;
+	char		sign;
+	int			len;
+}				t_number;
+
 int				ft_printf(const char *str, ...);
 int				print_char(va_list ap, t_flag *flag);
 int				print_string(va_list ap, t_flag *flag);
@@ -49,4 +56,5 @@ char			*ft_ptoahex(unsigned long nb);
 int				ft_isformat(int c);
 int				ft_atoi_printf(const char *str, int	*width);
 t_flag			parse(const char *str, va_list ap, int	*index);
+t_number    	get_number(va_list ap, t_flag *flag);
 #endif

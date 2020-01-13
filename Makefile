@@ -6,7 +6,7 @@
 #    By: mweerts <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/01/04 15:35:02 by mweerts           #+#    #+#              #
-#    Updated: 2020/01/12 06:56:25 by mweerts          ###   ########.fr        #
+#    Updated: 2020/01/13 08:24:30 by mweerts          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,7 +20,8 @@ SRCS =	srcs/ft_printf.c\
 		srcs/get_hex.c\
 		srcs/get_pointer.c\
 		srcs/utils.c\
-		srcs/parser.c
+		srcs/parser.c\
+		srcs/number_utils.c
 LIBFT_PATH = libft/
 LIBFT = libft.a
 OBJS= $(SRCS:.c=.o)

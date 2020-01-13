@@ -6,7 +6,7 @@
 /*   By: mweerts <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/05 06:01:34 by mweerts           #+#    #+#             */
-/*   Updated: 2020/01/13 07:52:09 by mweerts          ###   ########.fr       */
+/*   Updated: 2020/01/13 08:28:30 by mweerts          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,27 +37,25 @@ static	int		ft_putstr_max(const char *str, int max)
 
 int				print_string(va_list ap, t_flag *flag)
 {	char	*str;
-	int		len;
 	int		count;
 
 	count = 0;
 	str = get_string(ap);
 	if (flag->precision != -1 && (int)ft_strlen(str) > flag->precision)
-		len = flag->precision;
+		count = flag->precision;
 	else
-		len = ft_strlen(str);
+		count = ft_strlen(str);
 	if (flag->minus)
-		count += ft_putstr_max(str, flag->precision);
-	while (flag->width > len)
+		ft_putstr_max(str, flag->precision);
+	while (flag->width > count)
  	{
 		if (flag->zero && !flag->minus)
 			count += ft_putchar('0');
 		else
 			count += ft_putchar(' ');
-		flag->width--;
 	}
 	if (!flag->minus)
-		count += ft_putstr_max(str, flag->precision);
+		ft_putstr_max(str, flag->precision);
 	free(str);
 	return (count);
 }

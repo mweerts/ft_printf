@@ -6,11 +6,12 @@ int ft_printf(const char *str, ...);
 
 int main(int argc, char **argv)
 {
-    char *str = NULL;
+    void *str = NULL;
 	int one;
 	int two;
 
-    one = ft_printf("%.6s\n", "hi low");
-	two = printf("%.5s\n", "tubular");
-	printf("Ft_printf = \t%d\nPrintf = \t%d\n", one, two);
+	one = ft_printf("%10.5d\n%-10.5d\n", 123, -123);
+	two = printf("%10.5d\n%-10.5d\n", 123, -123);
+    printf("Ft_printf = \t%d\nPrintf = \t%d\n", one, two);
+   //printf("%s", ft_str_create('a', 3));
 }
