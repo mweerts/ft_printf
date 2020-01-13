@@ -6,7 +6,7 @@
 /*   By: mweerts <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/05 05:40:43 by mweerts           #+#    #+#             */
-/*   Updated: 2020/01/13 09:59:56 by mweerts          ###   ########.fr       */
+/*   Updated: 2020/01/13 10:53:45 by mweerts          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,11 @@ typedef	struct	s_flag
 	int		width;
 	int		precision;
 	char	format;
+	char	l;
+	char	ll;
+	char	h;
+	char	hh;
+	char	blank;
 	char	*str;
 }				t_flag;
 
