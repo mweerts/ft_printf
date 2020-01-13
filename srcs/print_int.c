@@ -6,7 +6,7 @@
 /*   By: mweerts <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/13 07:45:48 by mweerts           #+#    #+#             */
-/*   Updated: 2020/01/13 10:37:31 by mweerts          ###   ########.fr       */
+/*   Updated: 2020/01/13 10:39:52 by mweerts          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,7 @@ int print_int(va_list ap, t_flag *flag)
         put_nbr(nbr);
     while (flag->width > count)
     {
-		if (flag->zero && !flag->minus)
+		if (flag->zero && !flag->minus &&flag->precision == -1)
 			count += ft_putchar('0');
 		else
 			count += ft_putchar(' ');
