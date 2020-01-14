@@ -6,7 +6,7 @@
 /*   By: mweerts <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/05 05:40:43 by mweerts           #+#    #+#             */
-/*   Updated: 2020/01/13 17:50:10 by mweerts          ###   ########.fr       */
+/*   Updated: 2020/01/14 07:10:43 by mweerts          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,7 @@ typedef struct 	s_number
 	char		*str;
 	char		sign;
 	int			len;
+	char		is_zero;
 }				t_number;
 
 int				ft_printf(const char *str, ...);
