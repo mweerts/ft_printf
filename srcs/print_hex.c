@@ -6,7 +6,7 @@
 /*   By: mweerts <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/05 10:03:09 by mweerts           #+#    #+#             */
-/*   Updated: 2020/01/14 06:57:44 by mweerts          ###   ########.fr       */
+/*   Updated: 2020/01/14 06:58:37 by mweerts          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -128,11 +128,12 @@ int	print_hex(va_list ap, t_flag *flag)
 		else
 			count += ft_putchar(' ');
 	}
-	if (!flag->minus && flag->precision != 0)
+	if (!flag->minus)
 	{	
 		if (!flag->zero || (flag->zero && flag->precision != -1))
             put_X(flag);
-		ft_putstr(nbr.str);
+		if (flag->precision != 0)
+			ft_putstr(nbr.str);
 	}
 	
 	return (count);
