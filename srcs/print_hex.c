@@ -6,13 +6,13 @@
 /*   By: mweerts <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/05 10:03:09 by mweerts           #+#    #+#             */
-/*   Updated: 2020/01/14 07:21:37 by mweerts          ###   ########.fr       */
+/*   Updated: 2020/01/14 07:31:08 by mweerts          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/libftprintf.h"
 
-static	char	*ft_itoahex(unsigned long long nb, int isupper)
+char		*ft_itoahex(unsigned long long nb, int isupper)
 {
 	char	str[24];
 	char	*ret;
@@ -46,8 +46,6 @@ static	int		add_left(t_number *number, t_flag *flag)
 	char	*str;
 	int		len;
 
-	//if (flag->precision == -1)
-		//return (1);
 	len = flag->precision - number->len; 
 	str = NULL;
 	if (len > 0)
@@ -57,15 +55,6 @@ static	int		add_left(t_number *number, t_flag *flag)
 		if (!number->str)
 			return (0);
 	}
-/*	if (flag->diese)// && (number->str[0] != 0 && number->len != 1))
-	{
-		str = number->str;
-		if (flag->format == 'X')
-			number->str = ft_strjoin("0X", number->str);
-		else if (flag->format == 'x')
-			number->str = ft_strjoin("0x", number->str);
-		free(str);
-	}*/
 	number->len = ft_strlen(number->str);
 	return (1);
 }

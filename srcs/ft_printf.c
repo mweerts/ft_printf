@@ -6,7 +6,7 @@
 /*   By: mweerts <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/04 15:33:28 by mweerts           #+#    #+#             */
-/*   Updated: 2020/01/13 17:07:54 by mweerts          ###   ########.fr       */
+/*   Updated: 2020/01/14 07:25:08 by mweerts          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 t_convert	g_tab[] = {
 	{'c', &print_char},
 	{'s', &print_string},
-	//{'p', &get_pointer},
+	{'p', &print_pointer},
 	{'d', &print_int},
 	{'i', &print_int},
 	{'u', &print_uint},

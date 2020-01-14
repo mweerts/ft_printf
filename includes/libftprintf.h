@@ -6,7 +6,7 @@
 /*   By: mweerts <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/05 05:40:43 by mweerts           #+#    #+#             */
-/*   Updated: 2020/01/14 07:10:43 by mweerts          ###   ########.fr       */
+/*   Updated: 2020/01/14 07:32:48 by mweerts          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,10 +56,11 @@ int				print_int(va_list ap, t_flag *flag);
 int				print_uint(va_list ap, t_flag *flag);
 int				print_percent(t_flag *flag);
 int				print_hex(va_list ap, t_flag *flag);
-char			*get_pointer(va_list ap);
+int				print_pointer(va_list ap, t_flag *flag);
 char			*ft_ptoahex(unsigned long nb);
 int				ft_isformat(int c);
 int				ft_atoi_printf(const char *str, int	*width);
 t_flag			parse(const char *str, va_list ap, int	*index);
 int				ft_longlongtoa(long long nbr, t_number	*number, int precision);
+char			*ft_itoahex(unsigned long long nb, int isupper);
 #endif
