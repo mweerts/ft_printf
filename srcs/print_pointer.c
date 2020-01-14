@@ -6,7 +6,7 @@
 /*   By: mweerts <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/05 10:03:42 by mweerts           #+#    #+#             */
-/*   Updated: 2020/01/14 07:34:28 by mweerts          ###   ########.fr       */
+/*   Updated: 2020/01/14 07:55:04 by mweerts          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,5 +42,6 @@ int	print_pointer(va_list ap, t_flag *flag)
 		put_X();
 		ft_putstr(str);
 	}
+	free(str);
 	return (count);
 }
