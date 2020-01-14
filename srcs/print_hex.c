@@ -6,7 +6,7 @@
 /*   By: mweerts <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/05 10:03:09 by mweerts           #+#    #+#             */
-/*   Updated: 2020/01/13 18:04:33 by mweerts          ###   ########.fr       */
+/*   Updated: 2020/01/14 06:04:39 by mweerts          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,7 @@ static	int		add_left(t_number *number, t_flag *flag)
 		if (!number->str)
 			return (0);
 	}
-	if (flag->diese)
+	if (flag->diese && (number->str[0] != 0 && number->len != 1))
 	{
 		str = number->str;
 		if (flag->format == 'X')
