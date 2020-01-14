@@ -6,7 +6,7 @@
 /*   By: mweerts <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/07 20:31:57 by mweerts           #+#    #+#             */
-/*   Updated: 2020/01/13 07:49:25 by mweerts          ###   ########.fr       */
+/*   Updated: 2020/01/14 10:22:48 by mweerts          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,4 +71,5 @@ char			*ft_str_create(int c, int len);
 char			*ft_strjoin_free(char *s1, char *s2);
 int				ft_putchar(char c);
 int				ft_putstr(char *str);
+int				ft_abs(int nb);
 #endif

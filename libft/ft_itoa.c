@@ -6,7 +6,7 @@
 /*   By: mweerts <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/10 16:20:23 by mweerts           #+#    #+#             */
-/*   Updated: 2019/10/14 11:03:47 by mweerts          ###   ########.fr       */
+/*   Updated: 2020/01/14 10:26:01 by mweerts          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,13 +25,6 @@ static int		ft_intlen(int n)
 		nb_char++;
 	}
 	return (nb_char);
-}
-
-static int		ft_abs(int n)
-{
-	if (n < 0)
-		return (-n);
-	return (n);
 }
 
 char			*ft_itoa(int n)

@@ -6,7 +6,7 @@
 /*   By: mweerts <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/06 08:24:45 by mweerts           #+#    #+#             */
-/*   Updated: 2020/01/13 18:00:05 by mweerts          ###   ########.fr       */
+/*   Updated: 2020/01/14 10:25:10 by mweerts          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,15 +48,18 @@ t_flag			parse(const char *str, va_list ap, int	*index)
 			flag.plus = 1;
 		else if (str[i] == '0')
 			flag.zero = 1;
-		else if (str[i] == '*')
-			flag.width = (va_arg(ap, int));
-		else if (str[i] == '#')
-			flag.diese = 1;
 		else if (str[i] == '.')
 		{
 			i++;
-			i += ft_atoi_printf(&str[i], &flag.precision) - 1;
+			if (str[i] == '*')
+				flag.precision = ft_abs(va_arg(ap, int));
+			else
+				i += ft_atoi_printf(&str[i], &flag.precision) - 1;
 		}
+		else if (str[i] == '*')
+			flag.width = ft_abs(va_arg(ap, int));
+		else if (str[i] == '#')
+			flag.diese = 1;
 		else if (str[i] == ' ')
 			flag.blank = 1;
 		else if (str[i] == 'l')
