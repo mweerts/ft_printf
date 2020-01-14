@@ -6,7 +6,7 @@
 /*   By: mweerts <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/05 05:40:43 by mweerts           #+#    #+#             */
-/*   Updated: 2020/01/13 17:23:04 by mweerts          ###   ########.fr       */
+/*   Updated: 2020/01/13 17:50:10 by mweerts          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,7 @@ typedef	struct	s_flag
 	char	h;
 	char	hh;
 	char	blank;
+	char	diese;
 	char	*str;
 }				t_flag;
 
