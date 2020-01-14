@@ -6,7 +6,7 @@
 /*   By: mweerts <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/05 10:03:09 by mweerts           #+#    #+#             */
-/*   Updated: 2020/01/14 06:47:51 by mweerts          ###   ########.fr       */
+/*   Updated: 2020/01/14 06:48:15 by mweerts          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 static	char	*ft_itoahex(unsigned long long nb, int isupper)
 {
-	char	str[16];
+	char	str[24];
 	char	*ret;
 	int		i;
 	int		j;
