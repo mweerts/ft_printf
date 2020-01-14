@@ -6,7 +6,7 @@
 /*   By: mweerts <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/05 10:03:09 by mweerts           #+#    #+#             */
-/*   Updated: 2020/01/13 17:44:01 by mweerts          ###   ########.fr       */
+/*   Updated: 2020/01/13 17:45:36 by mweerts          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,7 @@ static	int		add_precision(t_number *number, int precision)
 	if (precision == -1)
 		return (1);
 	len = precision - number->len; 
+	str = NULL;
 	if (len > 0)
 		str = ft_str_create('0', len);
 	number->str = ft_strjoin_free(str, number->str);
