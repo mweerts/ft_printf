@@ -6,7 +6,7 @@
 /*   By: mweerts <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/06 08:24:45 by mweerts           #+#    #+#             */
-/*   Updated: 2020/01/14 10:36:21 by mweerts          ###   ########.fr       */
+/*   Updated: 2020/01/14 10:36:50 by mweerts          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,7 @@ t_flag			parse(const char *str, va_list ap, int	*index)
 			flag.width = va_arg(ap, int);
 			if (flag.width < -1)
 			{
-				flag.minus == 1;
+				flag.minus = 1;
 				flag.width = -flag.width;
 			}
 		}		
