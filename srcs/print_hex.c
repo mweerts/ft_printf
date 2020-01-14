@@ -6,7 +6,7 @@
 /*   By: mweerts <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/05 10:03:09 by mweerts           #+#    #+#             */
-/*   Updated: 2020/01/14 06:50:47 by mweerts          ###   ########.fr       */
+/*   Updated: 2020/01/14 06:57:02 by mweerts          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,6 +95,17 @@ static	t_number	get_number(va_list ap, t_flag *flag)
 	return(number);
 }
 
+static  int put_X(t_flag *flag)
+{
+    if (flag->diese)
+	{
+		ft_putchar('0');
+		ft_putchar(flag->format);
+		return (2);
+	}
+    return (0);
+}
+
 int	print_hex(va_list ap, t_flag *flag)
 {
 	int			count;
@@ -104,6 +115,10 @@ int	print_hex(va_list ap, t_flag *flag)
 	count = nbr.len;
 	if (nbr.len == 1 && nbr.str[0] == '0' && flag->precision == 0)
         count = 0;
+	if (flag->diese)
+        count += 2;
+	if (flag->minus || (flag->zero && flag->precision == -1))
+        put_X(flag);
 	if (flag->minus && flag->precision != 0)
 		ft_putstr(nbr.str);
 	while (flag->width > count)
@@ -114,8 +129,11 @@ int	print_hex(va_list ap, t_flag *flag)
 			count += ft_putchar(' ');
 	}
 	if (!flag->minus && flag->precision != 0)
+	{	
+		if (!flag->zero || (flag->zero && flag->precision != -1))
+            put_sign(nbr.sign, flag);
 		ft_putstr(nbr.str);
-	
+	}
 	
 	return (count);
 }
