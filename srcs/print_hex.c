@@ -6,7 +6,7 @@
 /*   By: mweerts <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/05 10:03:09 by mweerts           #+#    #+#             */
-/*   Updated: 2020/01/13 17:57:01 by mweerts          ###   ########.fr       */
+/*   Updated: 2020/01/13 18:04:33 by mweerts          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,8 +46,8 @@ static	int		add_left(t_number *number, t_flag *flag)
 	char	*str;
 	int		len;
 
-	if (flag->precision == -1)
-		return (1);
+	//if (flag->precision == -1)
+		//return (1);
 	len = flag->precision - number->len; 
 	str = NULL;
 	if (len > 0)
@@ -56,7 +56,6 @@ static	int		add_left(t_number *number, t_flag *flag)
 		number->str = ft_strjoin_free(str, number->str);
 		if (!number->str)
 			return (0);
-		number->len = ft_strlen(number->str);
 	}
 	if (flag->diese)
 	{
@@ -67,6 +66,7 @@ static	int		add_left(t_number *number, t_flag *flag)
 			number->str = ft_strjoin("0x", number->str);
 		free(str);
 	}
+	number->len = ft_strlen(number->str);
 	return (1);
 }
 
@@ -99,7 +99,6 @@ int	print_hex(va_list ap, t_flag *flag)
 {
 	int			count;
 	t_number	nbr;
-
 
 	nbr = get_number(ap, flag);
 	count = nbr.len;
