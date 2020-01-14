@@ -6,7 +6,7 @@
 /*   By: mweerts <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/05 10:03:09 by mweerts           #+#    #+#             */
-/*   Updated: 2020/01/13 17:48:09 by mweerts          ###   ########.fr       */
+/*   Updated: 2020/01/13 17:57:01 by mweerts          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,14 +41,14 @@ static	char	*ft_itoahex(unsigned long long nb, int isupper)
 	return (ret);
 }
 
-static	int		add_precision(t_number *number, int precision)
+static	int		add_left(t_number *number, t_flag *flag)
 {
 	char	*str;
 	int		len;
 
-	if (precision == -1)
+	if (flag->precision == -1)
 		return (1);
-	len = precision - number->len; 
+	len = flag->precision - number->len; 
 	str = NULL;
 	if (len > 0)
 	{
@@ -57,6 +57,15 @@ static	int		add_precision(t_number *number, int precision)
 		if (!number->str)
 			return (0);
 		number->len = ft_strlen(number->str);
+	}
+	if (flag->diese)
+	{
+		str = number->str;
+		if (flag->format == 'X')
+			number->str = ft_strjoin("0X", number->str);
+		else if (flag->format == 'x')
+			number->str = ft_strjoin("0x", number->str);
+		free(str);
 	}
 	return (1);
 }
@@ -82,7 +91,7 @@ static	t_number	get_number(va_list ap, t_flag *flag)
 		number.str = ft_itoahex(nbr, 0);
 	
 	number.len = ft_strlen(number.str);
-	add_precision(&number, flag->precision);
+	add_left(&number, flag);
 	return(number);
 }
 

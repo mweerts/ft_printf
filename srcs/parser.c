@@ -6,7 +6,7 @@
 /*   By: mweerts <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/06 08:24:45 by mweerts           #+#    #+#             */
-/*   Updated: 2020/01/13 11:44:19 by mweerts          ###   ########.fr       */
+/*   Updated: 2020/01/13 17:51:00 by mweerts          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@ static	void	init_flag(t_flag *flag)
 	flag->h = 0;
 	flag->hh = 0;
 	flag->blank = 0;
+	flag->diese = 0;
 	flag->str = NULL;
 }
 
@@ -49,6 +50,8 @@ t_flag			parse(const char *str, va_list ap, int	*index)
 			flag.zero = 1;
 		else if (str[i] == '*')
 			flag.width = (va_arg(ap, int));
+		else if (str[i] == '#')
+			flag.diese = 1;
 		else if (str[i] == '.')
 		{
 			i++;
