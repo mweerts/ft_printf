@@ -6,7 +6,7 @@
 /*   By: mweerts <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/06 08:24:45 by mweerts           #+#    #+#             */
-/*   Updated: 2020/01/14 10:25:10 by mweerts          ###   ########.fr       */
+/*   Updated: 2020/01/14 10:29:26 by mweerts          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,10 +51,7 @@ t_flag			parse(const char *str, va_list ap, int	*index)
 		else if (str[i] == '.')
 		{
 			i++;
-			if (str[i] == '*')
-				flag.precision = ft_abs(va_arg(ap, int));
-			else
-				i += ft_atoi_printf(&str[i], &flag.precision) - 1;
+			i += ft_atoi_printf(&str[i], &flag.precision) - 1;
 		}
 		else if (str[i] == '*')
 			flag.width = ft_abs(va_arg(ap, int));
