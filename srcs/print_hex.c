@@ -6,7 +6,7 @@
 /*   By: mweerts <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/05 10:03:09 by mweerts           #+#    #+#             */
-/*   Updated: 2020/01/14 07:17:44 by mweerts          ###   ########.fr       */
+/*   Updated: 2020/01/14 07:19:39 by mweerts          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,9 +99,9 @@ static	t_number	get_number(va_list ap, t_flag *flag)
 	return(number);
 }
 
-static  int put_X(t_flag *flag, char is_zero)
+static  int put_X(t_flag *flag)
 {
-    if (flag->diese && flag->precision != 0 && !is_zero)
+    if (flag->diese && flag->precision != 0)
 	{
 		ft_putchar('0');
 		ft_putchar(flag->format);
@@ -119,10 +119,10 @@ int	print_hex(va_list ap, t_flag *flag)
 	count = nbr.len;
 	if (nbr.len == 1 && nbr.str[0] == '0' && flag->precision == 0)
         count = 0;
-	if (flag->diese && flag->precision != 0 && !nbr.is_zero)
+	if (flag->diese && flag->precision != 0)
         count += 2;
-	if (flag->minus || (flag->zero && flag->precision != -1))
-        put_X(flag, nbr.is_zero);
+	if (flag->minus || (flag->zero && flag->precision == -1))
+        put_X(flag);
 	if (flag->minus && flag->precision != 0)
 		ft_putstr(nbr.str);
 	while (flag->width > count)
@@ -135,7 +135,7 @@ int	print_hex(va_list ap, t_flag *flag)
 	if (!flag->minus)
 	{	
 		if (!flag->zero || (flag->zero && flag->precision != -1))
-            put_X(flag, nbr.is_zero);
+            put_X(flag);
 		if (flag->precision != 0)
 			ft_putstr(nbr.str);
 	}
