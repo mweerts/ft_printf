@@ -6,7 +6,7 @@
 /*   By: mweerts <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/05 10:03:09 by mweerts           #+#    #+#             */
-/*   Updated: 2020/01/14 06:33:26 by mweerts          ###   ########.fr       */
+/*   Updated: 2020/01/14 06:35:18 by mweerts          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,7 +104,7 @@ int	print_hex(va_list ap, t_flag *flag)
 	count = nbr.len;
 	if (nbr.len == 1 && nbr.str[0] == '0' && flag->precision == 0)
         count = 0;
-	if (flag->diese && flag->zero && flag->width != -1)
+	if (flag->diese && flag->zero && flag->width != -1 && !flag->precision)
 	{
 		count += ft_putchar('0');
 		count += ft_putchar(flag->format);
