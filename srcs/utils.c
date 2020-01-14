@@ -6,7 +6,7 @@
 /*   By: mweerts <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/05 13:52:33 by mweerts           #+#    #+#             */
-/*   Updated: 2020/01/09 14:09:38 by mweerts          ###   ########.fr       */
+/*   Updated: 2020/01/13 17:06:55 by mweerts          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,34 +38,7 @@ int		ft_isformat(int c)
 	return (0);
 }
 
-char	*ft_itoahex(unsigned int nb, int isupper)
-{
-	char	str[9];
-	char	*ret;
-	int		i;
-	int		j;
 
-	i = 0;
-	if (nb == 0)
-		str[i++] = '0';
-	while (nb != 0)
-	{
-		if ((nb % 16) < 10)
-			str[i] = (nb % 16) + '0';
-		else
-			str[i] = isupper ? (nb % 16) + 'A' - 10 : (nb % 16) + 'a' - 10;
-		nb /= 16;
-		i++;
-	}
-	str[i--] = '\0';
-	if (!(ret = malloc(sizeof(char) * ft_strlen(str))))
-		return (NULL);
-	j = 0;
-	while (i >= 0)
-		ret[j++] = str[i--];
-	ret[j] = '\0';
-	return (ret);
-}
 
 char	*ft_ptoahex(unsigned long nb)
 {
