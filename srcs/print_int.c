@@ -6,7 +6,7 @@
 /*   By: mweerts <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/13 07:45:48 by mweerts           #+#    #+#             */
-/*   Updated: 2020/01/15 18:28:57 by mweerts          ###   ########.fr       */
+/*   Updated: 2020/01/16 00:06:23 by mweerts          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,8 @@ static	t_number	get_number(va_list ap, t_flag *flag)
 		nbr = -nbr;
 		number.sign = '-';
 	}
+	if (nbr == 0)
+		number.is_zero = 1;
 	ft_longlongtoa(nbr, &number, flag->precision);
 	return (number);
 }
@@ -55,20 +57,20 @@ int					print_int(va_list ap, t_flag *flag)
 
 	nbr = get_number(ap, flag);
 	count = nbr.len;
-	if (nbr.len == 1 && nbr.str[0] == '0' && flag->precision == 0)
+	if (nbr.is_zero && flag->precision == 0)
 		count = 0;
 	if (nbr.sign == '-' || flag->plus || flag->blank)
 		count++;
 	if (flag->minus || (flag->zero && flag->precision == -1))
 		put_sign(nbr.sign, flag);
-	if (flag->minus && flag->precision != 0)
+	if (flag->minus && !(flag->precision == 0 && nbr.is_zero))
 		ft_putstr(nbr.str);
 	print_width(flag, &count);
 	if (!flag->minus)
 	{
 		if (!flag->zero || (flag->zero && flag->precision != -1))
 			put_sign(nbr.sign, flag);
-		if (flag->precision != 0)
+		if (!(flag->precision == 0 && nbr.is_zero))
 			ft_putstr(nbr.str);
 	}
 	free(nbr.str);
