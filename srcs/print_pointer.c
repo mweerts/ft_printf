@@ -6,7 +6,7 @@
 /*   By: mweerts <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/05 10:03:42 by mweerts           #+#    #+#             */
-/*   Updated: 2020/01/15 15:47:53 by mweerts          ###   ########.fr       */
+/*   Updated: 2020/01/15 16:23:00 by mweerts          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,22 +24,20 @@ int			print_pointer(va_list ap, t_flag *flag)
 
 	str = ft_itoahex((unsigned long long)va_arg(ap, unsigned long), 0);
 	count = ft_strlen(str) + 2;
-	if (flag->minus && flag->precision != 0)
+	if (flag->precision == 0 && str[0] == '0')
+		count--;
+	if (flag->minus)
 	{
 		put_x();
-		ft_putstr(str);
+		if (!(flag->precision == 0 && str[0] == '0'))
+			ft_putstr(str);
 	}
-	while (flag->width > count)
-	{
-		if (flag->zero && !flag->minus && flag->precision == -1)
-			count += ft_putchar('0');
-		else
-			count += ft_putchar(' ');
-	}
-	if (!flag->minus && flag->precision != 0)
+	print_width(flag, &count);
+	if (!flag->minus)
 	{
 		put_x();
-		ft_putstr(str);
+		if (!(flag->precision == 0 && str[0] == '0'))
+			ft_putstr(str);
 	}
 	free(str);
 	return (count);

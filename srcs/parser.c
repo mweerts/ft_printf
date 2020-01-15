@@ -6,7 +6,7 @@
 /*   By: mweerts <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/06 08:24:45 by mweerts           #+#    #+#             */
-/*   Updated: 2020/01/15 15:21:04 by mweerts          ###   ########.fr       */
+/*   Updated: 2020/01/15 16:45:41 by mweerts          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,30 +27,6 @@ static	void	init_flag(t_flag *flag)
 	flag->blank = 0;
 	flag->diese = 0;
 	flag->str = NULL;
-}
-
-static void		parse_lh(t_flag *flag, int *i, const char *str)
-{
-	if (str[*i] == 'l')
-	{
-		if (str[*i + 1] == 'l')
-		{
-			flag->ll = 1;
-			i++;
-		}
-		else
-			flag->l = 1;
-	}
-	else if (str[*i] == 'h')
-	{
-		if (str[*i + 1] == 'h')
-		{
-			flag->hh = 1;
-			i++;
-		}
-		else
-			flag->h = 1;
-	}
 }
 
 static int		parse_star(t_flag *flag, va_list ap, char is_preci)
@@ -105,8 +81,26 @@ t_flag			parse(const char *str, va_list ap, int *index)
 			flag.diese = 1;
 		else if (str[i] == ' ')
 			flag.blank = 1;
-		else
-			parse_lh(&flag, &i, str);
+		else if (str[i] == 'l')
+		{
+			flag.l = 1;
+			if (str[i + 1] == 'l')
+			{
+				flag.ll = 1;
+				flag.l = 0;
+				i++;
+			}
+		}
+		else if (str[i] == 'h')
+		{
+			flag.h = 1;
+			if (str[i + 1] == 'h')
+			{
+				flag.hh = 1;
+				flag.h = 0;
+				i++;
+			}
+		}
 		i++;
 	}
 	if (ft_isformat(str[i]))
