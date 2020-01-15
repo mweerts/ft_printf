@@ -6,13 +6,13 @@
 /*   By: mweerts <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/05 13:52:33 by mweerts           #+#    #+#             */
-/*   Updated: 2020/01/13 17:06:55 by mweerts          ###   ########.fr       */
+/*   Updated: 2020/01/15 13:58:18 by mweerts          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/libftprintf.h"
 
-int		ft_atoi_printf(const char *str, int	*width)
+int		ft_atoi_printf(const char *str, int *width)
 {
 	int	i;
 	int	nbr;
@@ -37,8 +37,6 @@ int		ft_isformat(int c)
 	}
 	return (0);
 }
-
-
 
 char	*ft_ptoahex(unsigned long nb)
 {
