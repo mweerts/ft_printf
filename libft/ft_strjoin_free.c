@@ -6,15 +6,15 @@
 /*   By: mweerts <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/13 07:39:31 by mweerts           #+#    #+#             */
-/*   Updated: 2020/01/13 07:41:27 by mweerts          ###   ########.fr       */
+/*   Updated: 2020/01/15 13:47:13 by mweerts          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char    *ft_strjoin_free(char *s1, char *s2)
+char	*ft_strjoin_free(char *s1, char *s2)
 {
-    	int		i;
+	int		i;
 	int		j;
 	char	*ret;
 
@@ -33,7 +33,7 @@ char    *ft_strjoin_free(char *s1, char *s2)
 	while (s2[j])
 		ret[i++] = s2[j++];
 	ret[i] = '\0';
-    free(s1);
-    free(s2);
+	free(s1);
+	free(s2);
 	return (ret);
 }

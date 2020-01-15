@@ -6,7 +6,7 @@
 /*   By: mweerts <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/05 05:40:43 by mweerts           #+#    #+#             */
-/*   Updated: 2020/01/14 07:32:48 by mweerts          ###   ########.fr       */
+/*   Updated: 2020/01/15 13:44:43 by mweerts          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ typedef	struct	s_convert
 	int			(*function)(va_list ap, t_flag *flag);
 }				t_convert;
 
-typedef struct 	s_number
+typedef struct	s_number
 {
 	char		*str;
 	char		sign;
