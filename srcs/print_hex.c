@@ -6,13 +6,13 @@
 /*   By: mweerts <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/05 10:03:09 by mweerts           #+#    #+#             */
-/*   Updated: 2020/01/14 07:31:08 by mweerts          ###   ########.fr       */
+/*   Updated: 2020/01/15 14:16:22 by mweerts          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/libftprintf.h"
 
-char		*ft_itoahex(unsigned long long nb, int isupper)
+char				*ft_itoahex(unsigned long long nb, int isupper)
 {
 	char	str[24];
 	char	*ret;
@@ -41,12 +41,12 @@ char		*ft_itoahex(unsigned long long nb, int isupper)
 	return (ret);
 }
 
-static	int		add_left(t_number *number, t_flag *flag)
+static	int			add_left(t_number *number, t_flag *flag)
 {
 	char	*str;
 	int		len;
 
-	len = flag->precision - number->len; 
+	len = flag->precision - number->len;
 	str = NULL;
 	if (len > 0)
 	{
@@ -66,66 +66,53 @@ static	t_number	get_number(va_list ap, t_flag *flag)
 
 	if (flag->ll)
 		nbr = va_arg(ap, unsigned long long int);
-	else if (flag-> l)
+	else if (flag->l)
 		nbr = (unsigned long long)va_arg(ap, unsigned long int);
-	else if (flag-> h)
+	else if (flag->h)
 		nbr = (unsigned long long)(unsigned short int)va_arg(ap, int);
-	else if (flag-> hh)
+	else if (flag->hh)
 		nbr = (unsigned long long)(unsigned char)va_arg(ap, int);
 	else
-		nbr = (unsigned long long)va_arg(ap, unsigned int);	
+		nbr = (unsigned long long)va_arg(ap, unsigned int);
 	if (flag->format == 'X')
 		number.str = ft_itoahex(nbr, 1);
 	else
 		number.str = ft_itoahex(nbr, 0);
-	
 	number.len = ft_strlen(number.str);
 	add_left(&number, flag);
 	if (nbr == 0)
 		number.is_zero = 1;
 	else
 		number.is_zero = 0;
-	return(number);
+	return (number);
 }
 
-static  int put_X(t_flag *flag, char is_zero)
-{
-    if (flag->diese && flag->precision != 0 && is_zero == 0)
-	{
-		ft_putchar('0');
-		ft_putchar(flag->format);
-		return (2);
-	}
-    return (0);
-}
-
-int	print_hex(va_list ap, t_flag *flag)
+int					print_hex(va_list ap, t_flag *flag)
 {
 	int			count;
 	t_number	nbr;
 
 	nbr = get_number(ap, flag);
-
 	count = nbr.len;
 	if (nbr.len == 1 && nbr.str[0] == '0' && flag->precision == 0)
-        count = 0;
+		count = 0;
 	if (flag->diese && flag->precision != 0 && !nbr.is_zero)
-        count += 2;
+		count += 2;
 	if (flag->minus || (flag->zero && flag->precision == -1))
-        put_X(flag, nbr.is_zero);
+		put_X(flag, nbr.is_zero);
 	if (flag->minus && flag->precision != 0)
 		ft_putstr(nbr.str);
 	while (flag->width > count)
- 	{
+	{
 		if (flag->zero && !flag->minus && flag->precision == -1)
 			count += ft_putchar('0');
 		else
 			count += ft_putchar(' ');
 	}
 	if (!flag->minus)
-	{	
+	{
 		if (!flag->zero || (flag->zero && flag->precision != -1))
-            put_X(flag, nbr.is_zero);
+			put_X(flag, nbr.is_zero);
 		if (flag->precision != 0)
 			ft_putstr(nbr.str);
 	}
