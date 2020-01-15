@@ -6,7 +6,7 @@
 /*   By: mweerts <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/04 15:33:28 by mweerts           #+#    #+#             */
-/*   Updated: 2020/01/14 07:25:08 by mweerts          ###   ########.fr       */
+/*   Updated: 2020/01/15 14:11:54 by mweerts          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ t_convert	g_tab[] = {
 	{'X', &print_hex},
 	{-1, NULL}};
 
-static	int	get_format(char format, va_list ap, t_flag *flag)
+static	int		get_format(char format, va_list ap, t_flag *flag)
 {
 	int	i;
 
@@ -39,7 +39,7 @@ static	int	get_format(char format, va_list ap, t_flag *flag)
 	return (-1);
 }
 
-static	int		ft_print_flag(const char *str, va_list ap, int	*index)
+static	int		ft_print_flag(const char *str, va_list ap, int *index)
 {
 	t_flag	flag;
 	int		count;
@@ -50,7 +50,7 @@ static	int		ft_print_flag(const char *str, va_list ap, int	*index)
 	return (count);
 }
 
-int			ft_printf(const char *str, ...)
+int				ft_printf(const char *str, ...)
 {
 	va_list	ap;
 	int		i;
@@ -66,8 +66,8 @@ int			ft_printf(const char *str, ...)
 			write(1, &str[i], 1);
 			count++;
 		}
-		else 
-			count += ft_print_flag(&str[i + 1], ap, &i);	
+		else
+			count += ft_print_flag(&str[i + 1], ap, &i);
 		i++;
 	}
 	va_end(ap);
