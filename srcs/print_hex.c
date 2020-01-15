@@ -6,11 +6,22 @@
 /*   By: mweerts <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/05 10:03:09 by mweerts           #+#    #+#             */
-/*   Updated: 2020/01/15 14:16:22 by mweerts          ###   ########.fr       */
+/*   Updated: 2020/01/15 15:25:26 by mweerts          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/libftprintf.h"
+
+static int			put_x(t_flag *flag, char is_zero)
+{
+	if (flag->diese && flag->precision != 0 && is_zero == 0)
+	{
+		ft_putchar('0');
+		ft_putchar(flag->format);
+		return (2);
+	}
+	return (0);
+}
 
 char				*ft_itoahex(unsigned long long nb, int isupper)
 {
@@ -99,22 +110,17 @@ int					print_hex(va_list ap, t_flag *flag)
 	if (flag->diese && flag->precision != 0 && !nbr.is_zero)
 		count += 2;
 	if (flag->minus || (flag->zero && flag->precision == -1))
-		put_X(flag, nbr.is_zero);
+		put_x(flag, nbr.is_zero);
 	if (flag->minus && flag->precision != 0)
 		ft_putstr(nbr.str);
-	while (flag->width > count)
-	{
-		if (flag->zero && !flag->minus && flag->precision == -1)
-			count += ft_putchar('0');
-		else
-			count += ft_putchar(' ');
-	}
+	print_width(flag, &count);
 	if (!flag->minus)
 	{
 		if (!flag->zero || (flag->zero && flag->precision != -1))
-			put_X(flag, nbr.is_zero);
+			put_x(flag, nbr.is_zero);
 		if (flag->precision != 0)
 			ft_putstr(nbr.str);
 	}
+	free(nbr.str);
 	return (count);
 }

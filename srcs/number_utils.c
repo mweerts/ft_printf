@@ -6,7 +6,7 @@
 /*   By: mweerts <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/13 08:23:07 by mweerts           #+#    #+#             */
-/*   Updated: 2020/01/15 14:21:16 by mweerts          ###   ########.fr       */
+/*   Updated: 2020/01/15 14:25:07 by mweerts          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,17 @@ static int		longlong_len(long long nbr)
 		count++;
 	}
 	return (count);
+}
+
+void			print_width(t_flag *flag, int *count)
+{
+	while (flag->width > *count)
+	{
+		if (flag->zero && !flag->minus && flag->precision == -1)
+			*count += ft_putchar('0');
+		else
+			*count += ft_putchar(' ');
+	}
 }
 
 int				ft_longlongtoa(long long nbr, t_number *number, int precision)
