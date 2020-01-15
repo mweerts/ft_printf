@@ -6,7 +6,7 @@
 /*   By: mweerts <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/05 10:21:19 by mweerts           #+#    #+#             */
-/*   Updated: 2020/01/15 14:00:50 by mweerts          ###   ########.fr       */
+/*   Updated: 2020/01/15 18:30:43 by mweerts          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,14 +19,14 @@ static	t_number	get_number(va_list ap, t_flag *flag)
 
 	number.len = 0;
 	nbr = 0;
-	if (flag->l)
-		nbr = (long long)va_arg(ap, unsigned long int);
-	else if (flag->ll)
+	if (flag->ll)
 		nbr = va_arg(ap, unsigned long long int);
-	else if (flag->h)
-		nbr = (long long)(unsigned short int)va_arg(ap, int);
 	else if (flag->hh)
 		nbr = (long long)(unsigned char)va_arg(ap, int);
+	else if (flag->l)
+		nbr = (long long)va_arg(ap, unsigned long int);
+	else if (flag->h)
+		nbr = (long long)(unsigned short int)va_arg(ap, int);
 	else
 		nbr = (long long)va_arg(ap, unsigned int);
 	number.sign = '+';

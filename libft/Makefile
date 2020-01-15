@@ -6,7 +6,7 @@
 #    By: mweerts <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/10/07 20:17:58 by mweerts           #+#    #+#              #
-#    Updated: 2020/01/14 10:22:54 by mweerts          ###   ########.fr        #
+#    Updated: 2020/01/15 17:07:31 by mweerts          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -50,7 +50,8 @@ SRCS =	ft_memset.c\
 		ft_strjoin_free.c\
 		ft_putchar.c\
 		ft_putstr.c\
-		ft_abs.c
+		ft_abs.c\
+		ft_strcontain.c
 
 SRCS_BONUS =	ft_lstnew_bonus.c\
 				ft_lstadd_front_bonus.c\

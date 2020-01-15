@@ -6,7 +6,7 @@
 /*   By: mweerts <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/05 10:03:09 by mweerts           #+#    #+#             */
-/*   Updated: 2020/01/15 15:25:26 by mweerts          ###   ########.fr       */
+/*   Updated: 2020/01/15 18:30:21 by mweerts          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,12 +77,12 @@ static	t_number	get_number(va_list ap, t_flag *flag)
 
 	if (flag->ll)
 		nbr = va_arg(ap, unsigned long long int);
+	else if (flag->hh)
+		nbr = (unsigned long long)(unsigned char)va_arg(ap, int);
 	else if (flag->l)
 		nbr = (unsigned long long)va_arg(ap, unsigned long int);
 	else if (flag->h)
 		nbr = (unsigned long long)(unsigned short int)va_arg(ap, int);
-	else if (flag->hh)
-		nbr = (unsigned long long)(unsigned char)va_arg(ap, int);
 	else
 		nbr = (unsigned long long)va_arg(ap, unsigned int);
 	if (flag->format == 'X')
