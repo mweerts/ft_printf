@@ -6,7 +6,7 @@
 /*   By: mweerts <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/05 10:03:09 by mweerts           #+#    #+#             */
-/*   Updated: 2020/01/16 15:15:23 by mweerts          ###   ########.fr       */
+/*   Updated: 2020/01/16 18:49:33 by mweerts          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,10 @@
 
 static int			put_x(t_flag *flag, char is_zero)
 {
-	if (flag->diese && flag->precision != 0 && is_zero == 0)
+	if (flag->diese)
 	{
+		if (is_zero == 1)
+			return (0);
 		ft_putchar('0');
 		ft_putchar(flag->format);
 		return (2);
@@ -107,7 +109,7 @@ int					print_hex(va_list ap, t_flag *flag)
 	count = nbr.len;
 	if (nbr.len == 1 && nbr.str[0] == '0' && flag->precision == 0)
 		count = 0;
-	if (flag->diese && flag->precision != 0 && !nbr.is_zero)
+	if (flag->diese && !nbr.is_zero)
 		count += 2;
 	if (flag->minus || (flag->zero && flag->precision == -1))
 		put_x(flag, nbr.is_zero);
