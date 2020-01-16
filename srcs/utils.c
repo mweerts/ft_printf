@@ -6,13 +6,13 @@
 /*   By: mweerts <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/05 13:52:33 by mweerts           #+#    #+#             */
-/*   Updated: 2020/01/16 13:19:18 by mweerts          ###   ########.fr       */
+/*   Updated: 2020/01/16 15:16:57 by mweerts          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/libftprintf.h"
 
-static int		longlong_len(long long nbr)
+static int	longlong_len(unsigned long long nbr)
 {
 	int count;
 
@@ -27,7 +27,7 @@ static int		longlong_len(long long nbr)
 	return (count);
 }
 
-int				ft_isformat(int c)
+int			ft_isformat(int c)
 {
 	if (c == 'c' || c == 's' || c == 'p' || c == 'd'
 		|| c == 'i' || c == 'u' || c == 'x' || c == 'X' || c == '%')
@@ -37,7 +37,7 @@ int				ft_isformat(int c)
 	return (0);
 }
 
-void			print_width(t_flag *flag, int *count)
+void		print_width(t_flag *flag, int *count)
 {
 	while (flag->width > *count)
 	{
@@ -48,7 +48,8 @@ void			print_width(t_flag *flag, int *count)
 	}
 }
 
-int				ft_longlongtoa(long long nbr, t_number *number, int precision)
+int			ft_longlongtoa(unsigned long long nbr,
+							t_number *number, int precision)
 {
 	char	*str;
 	int		i;

@@ -6,7 +6,7 @@
 /*   By: mweerts <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/05 05:40:43 by mweerts           #+#    #+#             */
-/*   Updated: 2020/01/16 13:15:18 by mweerts          ###   ########.fr       */
+/*   Updated: 2020/01/16 15:07:26 by mweerts          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,7 @@ int				print_hex(va_list ap, t_flag *flag);
 int				print_pointer(va_list ap, t_flag *flag);
 int				ft_isformat(int c);
 t_flag			parse(const char *str, va_list ap, int	*index);
-int				ft_longlongtoa(long long nbr, t_number	*number, int precision);
+int				ft_longlongtoa(unsigned long long nbr, t_number	*number, int precision);
 void			print_width(t_flag *flag, int *count);
 t_number		get_number_hex(va_list ap, t_flag *flag);
 #endif
