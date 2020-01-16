@@ -6,11 +6,19 @@
 /*   By: mweerts <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/13 07:45:48 by mweerts           #+#    #+#             */
-/*   Updated: 2020/01/16 15:20:43 by mweerts          ###   ########.fr       */
+/*   Updated: 2020/01/16 15:23:52 by mweerts          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/libftprintf.h"
+
+static	t_number	get_llongmin(t_number *number)
+{
+	number->str = ft_strdup("9223372036854775808");
+	number->sign = '-';
+	number->len = ft_strlen(number->str);
+	return (*number);
+}
 
 static	t_number	get_number(va_list ap, t_flag *flag)
 {
@@ -30,12 +38,7 @@ static	t_number	get_number(va_list ap, t_flag *flag)
 	else
 		nbr = (long long)va_arg(ap, int);
 	if (nbr == LLONG_MIN)
-	{
-		number.str = ft_strdup("9223372036854775808");
-		number.sign = '-';
-		number.len = ft_strlen(number.str);
-		return (number);
-	}
+		return (get_llongmin(&number));
 	number.sign = '+';
 	if (nbr < 0)
 	{
