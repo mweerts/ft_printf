@@ -6,7 +6,7 @@
 /*   By: mweerts <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/13 07:45:48 by mweerts           #+#    #+#             */
-/*   Updated: 2020/01/16 15:23:52 by mweerts          ###   ########.fr       */
+/*   Updated: 2020/01/16 15:25:37 by mweerts          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,12 +39,9 @@ static	t_number	get_number(va_list ap, t_flag *flag)
 		nbr = (long long)va_arg(ap, int);
 	if (nbr == LLONG_MIN)
 		return (get_llongmin(&number));
-	number.sign = '+';
+	number.sign = nbr < 0 ? '-' : '+';
 	if (nbr < 0)
-	{
 		nbr = -nbr;
-		number.sign = '-';
-	}
 	number.is_zero = nbr == 0 ? 1 : 0;
 	ft_ulonglongtoa((unsigned long long)nbr, &number, flag->precision);
 	return (number);
