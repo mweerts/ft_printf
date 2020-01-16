@@ -6,7 +6,7 @@
 /*   By: mweerts <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/05 10:03:09 by mweerts           #+#    #+#             */
-/*   Updated: 2020/01/15 18:30:21 by mweerts          ###   ########.fr       */
+/*   Updated: 2020/01/16 14:54:02 by mweerts          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ static int			put_x(t_flag *flag, char is_zero)
 	return (0);
 }
 
-char				*ft_itoahex(unsigned long long nb, int isupper)
+static	char		*ft_itoahex(unsigned long long nb, int isupper)
 {
 	char	str[24];
 	char	*ret;
@@ -43,7 +43,7 @@ char				*ft_itoahex(unsigned long long nb, int isupper)
 		i++;
 	}
 	str[i--] = '\0';
-	if (!(ret = malloc(sizeof(char) * ft_strlen(str))))
+	if (!(ret = malloc(sizeof(char) * (ft_strlen(str) + 1))))
 		return (NULL);
 	j = 0;
 	while (i >= 0)
@@ -70,16 +70,16 @@ static	int			add_left(t_number *number, t_flag *flag)
 	return (1);
 }
 
-static	t_number	get_number(va_list ap, t_flag *flag)
+t_number			get_number_hex(va_list ap, t_flag *flag)
 {
 	t_number					number;
 	unsigned	long	long	nbr;
 
-	if (flag->ll)
+	if (flag->ll && flag->format != 'p')
 		nbr = va_arg(ap, unsigned long long int);
-	else if (flag->hh)
+	else if (flag->hh && flag->format != 'p')
 		nbr = (unsigned long long)(unsigned char)va_arg(ap, int);
-	else if (flag->l)
+	else if (flag->l || flag->format == 'p')
 		nbr = (unsigned long long)va_arg(ap, unsigned long int);
 	else if (flag->h)
 		nbr = (unsigned long long)(unsigned short int)va_arg(ap, int);
@@ -103,7 +103,7 @@ int					print_hex(va_list ap, t_flag *flag)
 	int			count;
 	t_number	nbr;
 
-	nbr = get_number(ap, flag);
+	nbr = get_number_hex(ap, flag);
 	count = nbr.len;
 	if (nbr.len == 1 && nbr.str[0] == '0' && flag->precision == 0)
 		count = 0;
@@ -111,14 +111,14 @@ int					print_hex(va_list ap, t_flag *flag)
 		count += 2;
 	if (flag->minus || (flag->zero && flag->precision == -1))
 		put_x(flag, nbr.is_zero);
-	if (flag->minus && flag->precision != 0)
+	if (flag->minus && (!(flag->precision == 0 && nbr.is_zero)))
 		ft_putstr(nbr.str);
 	print_width(flag, &count);
 	if (!flag->minus)
 	{
 		if (!flag->zero || (flag->zero && flag->precision != -1))
 			put_x(flag, nbr.is_zero);
-		if (flag->precision != 0)
+		if (!(flag->precision == 0 && nbr.is_zero))
 			ft_putstr(nbr.str);
 	}
 	free(nbr.str);

@@ -6,7 +6,7 @@
 /*   By: mweerts <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/05 10:03:42 by mweerts           #+#    #+#             */
-/*   Updated: 2020/01/15 16:23:00 by mweerts          ###   ########.fr       */
+/*   Updated: 2020/01/16 13:06:14 by mweerts          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,26 +19,25 @@ static	int	put_x(void)
 
 int			print_pointer(va_list ap, t_flag *flag)
 {
-	char	*str;
-	int		count;
+	t_number	number;
+	int			count;
 
-	str = ft_itoahex((unsigned long long)va_arg(ap, unsigned long), 0);
-	count = ft_strlen(str) + 2;
-	if (flag->precision == 0 && str[0] == '0')
+	number = get_number_hex(ap, flag);
+	count = ft_strlen(number.str) + 2;
+	if (flag->precision == 0 && number.is_zero)
 		count--;
-	if (flag->minus)
-	{
+	if (flag->minus || (flag->zero && flag->precision == -1))
 		put_x();
-		if (!(flag->precision == 0 && str[0] == '0'))
-			ft_putstr(str);
-	}
+	if (flag->minus && (!(flag->precision == 0 && number.is_zero)))
+		ft_putstr(number.str);
 	print_width(flag, &count);
 	if (!flag->minus)
 	{
-		put_x();
-		if (!(flag->precision == 0 && str[0] == '0'))
-			ft_putstr(str);
+		if (!flag->zero || (flag->zero && flag->precision != -1))
+			put_x();
+		if (!(flag->precision == 0 && number.is_zero))
+			ft_putstr(number.str);
 	}
-	free(str);
+	free(number.str);
 	return (count);
 }

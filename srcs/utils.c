@@ -6,29 +6,28 @@
 /*   By: mweerts <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/05 13:52:33 by mweerts           #+#    #+#             */
-/*   Updated: 2020/01/15 15:23:54 by mweerts          ###   ########.fr       */
+/*   Updated: 2020/01/16 13:19:18 by mweerts          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/libftprintf.h"
 
-int		ft_atoi_printf(const char *str, int *width)
+static int		longlong_len(long long nbr)
 {
-	int	i;
-	int	nbr;
+	int count;
 
-	i = 0;
-	nbr = 0;
-	while (str[i] && str[i] >= '0' && str[i] <= '9')
+	count = 0;
+	if (nbr == 0)
+		return (1);
+	while (nbr != 0)
 	{
-		nbr = nbr * 10 + (str[i] - 48);
-		i++;
+		nbr = nbr / 10;
+		count++;
 	}
-	*width = nbr;
-	return (i);
+	return (count);
 }
 
-int		ft_isformat(int c)
+int				ft_isformat(int c)
 {
 	if (c == 'c' || c == 's' || c == 'p' || c == 'd'
 		|| c == 'i' || c == 'u' || c == 'x' || c == 'X' || c == '%')
@@ -36,4 +35,39 @@ int		ft_isformat(int c)
 		return (1);
 	}
 	return (0);
+}
+
+void			print_width(t_flag *flag, int *count)
+{
+	while (flag->width > *count)
+	{
+		if (flag->zero && !flag->minus && flag->precision == -1)
+			*count += ft_putchar('0');
+		else
+			*count += ft_putchar(' ');
+	}
+}
+
+int				ft_longlongtoa(long long nbr, t_number *number, int precision)
+{
+	char	*str;
+	int		i;
+
+	number->len = longlong_len(nbr);
+	if (number->len < precision)
+		number->len = precision;
+	i = number->len;
+	if (!(str = ft_str_create('0', number->len)))
+		return (0);
+	str[i--] = '\0';
+	if (nbr == 0)
+		str[0] = '0';
+	while (nbr != 0)
+	{
+		str[i] = (nbr % 10) + '0';
+		nbr /= 10;
+		i--;
+	}
+	number->str = str;
+	return (1);
 }

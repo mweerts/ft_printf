@@ -6,7 +6,7 @@
 /*   By: mweerts <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/06 08:24:45 by mweerts           #+#    #+#             */
-/*   Updated: 2020/01/15 19:30:45 by mweerts          ###   ########.fr       */
+/*   Updated: 2020/01/16 13:15:04 by mweerts          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,6 +72,22 @@ static	void	simple_flag(char c, t_flag *flag)
 		else
 			flag->h = 1;
 	}
+}
+
+static int		ft_atoi_printf(const char *str, int *width)
+{
+	int	i;
+	int	nbr;
+
+	i = 0;
+	nbr = 0;
+	while (str[i] && str[i] >= '0' && str[i] <= '9')
+	{
+		nbr = nbr * 10 + (str[i] - 48);
+		i++;
+	}
+	*width = nbr;
+	return (i);
 }
 
 t_flag			parse(const char *str, va_list ap, int *index)
