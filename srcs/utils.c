@@ -6,13 +6,13 @@
 /*   By: mweerts <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/05 13:52:33 by mweerts           #+#    #+#             */
-/*   Updated: 2020/01/16 15:16:57 by mweerts          ###   ########.fr       */
+/*   Updated: 2020/01/16 15:20:34 by mweerts          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/libftprintf.h"
 
-static int	longlong_len(unsigned long long nbr)
+static int	ulonglong_len(unsigned long long nbr)
 {
 	int count;
 
@@ -48,13 +48,13 @@ void		print_width(t_flag *flag, int *count)
 	}
 }
 
-int			ft_longlongtoa(unsigned long long nbr,
+int			ft_ulonglongtoa(unsigned long long nbr,
 							t_number *number, int precision)
 {
 	char	*str;
 	int		i;
 
-	number->len = longlong_len(nbr);
+	number->len = ulonglong_len(nbr);
 	if (number->len < precision)
 		number->len = precision;
 	i = number->len;

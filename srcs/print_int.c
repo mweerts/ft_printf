@@ -6,7 +6,7 @@
 /*   By: mweerts <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/13 07:45:48 by mweerts           #+#    #+#             */
-/*   Updated: 2020/01/16 15:07:09 by mweerts          ###   ########.fr       */
+/*   Updated: 2020/01/16 15:20:43 by mweerts          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ static	t_number	get_number(va_list ap, t_flag *flag)
 		number.sign = '-';
 	}
 	number.is_zero = nbr == 0 ? 1 : 0;
-	ft_longlongtoa((unsigned long long)nbr, &number, flag->precision);
+	ft_ulonglongtoa((unsigned long long)nbr, &number, flag->precision);
 	return (number);
 }
 

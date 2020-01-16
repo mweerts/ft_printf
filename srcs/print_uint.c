@@ -6,7 +6,7 @@
 /*   By: mweerts <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/05 10:21:19 by mweerts           #+#    #+#             */
-/*   Updated: 2020/01/16 15:17:12 by mweerts          ###   ########.fr       */
+/*   Updated: 2020/01/16 15:20:51 by mweerts          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ static	t_number	get_number(va_list ap, t_flag *flag)
 		number.is_zero = 1;
 	else
 		number.is_zero = 0;
-	ft_longlongtoa(nbr, &number, flag->precision);
+	ft_ulonglongtoa(nbr, &number, flag->precision);
 	return (number);
 }
 
