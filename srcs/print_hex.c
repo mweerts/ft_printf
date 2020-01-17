@@ -6,7 +6,7 @@
 /*   By: mweerts <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/05 10:03:09 by mweerts           #+#    #+#             */
-/*   Updated: 2020/01/16 18:49:33 by mweerts          ###   ########.fr       */
+/*   Updated: 2020/01/16 23:02:55 by mweerts          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -107,7 +107,7 @@ int					print_hex(va_list ap, t_flag *flag)
 
 	nbr = get_number_hex(ap, flag);
 	count = nbr.len;
-	if (nbr.len == 1 && nbr.str[0] == '0' && flag->precision == 0)
+	if (nbr.is_zero && flag->precision == 0)
 		count = 0;
 	if (flag->diese && !nbr.is_zero)
 		count += 2;
