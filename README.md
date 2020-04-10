@@ -1,1 +1,1 @@
-![115/100](https://imgur.com/7SHWDo2)
+![115/100](https://i.imgur.com/7SHWDo2.png)
